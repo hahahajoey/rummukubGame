@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
 public class Meld {
-    ArrayList<Tile> tiles;
+    public ArrayList<Tile> tiles;
+
+    public Meld(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
+    }
 }
