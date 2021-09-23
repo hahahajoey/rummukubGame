@@ -18,10 +18,12 @@ public class PlayerSequenceTest extends TestCase {
 
     @DisplayName("P1 plays first and draws: all players still see the table empty")
     @Test
-    public void P1FirstRound() {
+    public void testP1FirstRound() {
         game.start();
-        assertNull(game.player[0].melds);
-        assertNull(game.player[1].melds);
-        assertNull(game.player[2].melds);
+        assertEquals("Bob",game.players[0].name);
+        assertNull(game.players[0].melds);
+        assertNull(game.players[1].melds);
+        assertNull(game.players[2].melds);
     }
+
 }
