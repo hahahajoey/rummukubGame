@@ -2,6 +2,8 @@ import junit.framework.TestCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 public class PlayerSequenceTest extends TestCase {
     Game game;
 
@@ -21,9 +23,9 @@ public class PlayerSequenceTest extends TestCase {
     public void testP1FirstRound() {
         game.start();
         assertEquals("Bob",game.players[0].name);
-        assertNull(game.players[0].melds);
-        assertNull(game.players[1].melds);
-        assertNull(game.players[2].melds);
+        assertEquals(game.players[0].melds, new ArrayList<Meld>());
+        assertEquals(game.players[1].melds, new ArrayList<Meld>());
+        assertEquals(game.players[2].melds, new ArrayList<Meld>());
     }
 
 }
