@@ -22,10 +22,10 @@ public class PlayerSequenceTest extends TestCase {
     @Test
     public void testP1FirstRound() {
         game.start();
-        assertEquals("Bob",game.players[0].name);
-        assertEquals(game.players[0].melds, new ArrayList<Meld>());
-        assertEquals(game.players[1].melds, new ArrayList<Meld>());
-        assertEquals(game.players[2].melds, new ArrayList<Meld>());
+        assertEquals("Bob", game.players[0].name);
+        for (Meld melds : game.players[0].melds) {
+            assertEquals(melds , new ArrayList<>());
+        }
     }
 
 }
