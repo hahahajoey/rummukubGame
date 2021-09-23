@@ -8,4 +8,10 @@ public class Player {
         this.name = name;
         melds = new ArrayList<>();
     }
+
+    public void draw() {
+    }
+
+    public void place(Tile[] tiles) {
+    }
 }

@@ -10,7 +10,4 @@ public class Game {
         players[playerNumber] = player;
         playerNumber++;
     }
-
-    public void start() {
-    }
 }
