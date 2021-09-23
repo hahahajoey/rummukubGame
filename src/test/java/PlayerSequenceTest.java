@@ -1,14 +1,16 @@
-import junit.framework.TestCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class PlayerSequenceTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class PlayerSequenceTest{
     Game game;
 
     public PlayerSequenceTest() {
         game = new Game();
+
         Player bob = new Player("Bob");
         Player alice = new Player("Alice");
         Player tim = new Player("Tim");
@@ -35,10 +37,18 @@ public class PlayerSequenceTest extends TestCase {
         tiles.add(new Tile("JH"));
         tiles.add(new Tile("QH"));
         tiles.add(new Tile("KH"));
+
+        game.currentPlayer = 0;
         game.draw();
+        assertEquals(game.currentPlayer, 1);
+
         game.players[1].place(tiles);
-        assertEquals(game.players[1].melds.get(0).tiles.get(0),new Tile("JH"));
-        assertEquals(game.players[1].melds.get(0).tiles.get(1),new Tile("QH"));
-        assertEquals(game.players[1].melds.get(0).tiles.get(2),new Tile("KH"));
+        assertEqualToTile(game.players[1].melds.get(0).tiles.get(0), "JH");
+        assertEqualToTile(game.players[1].melds.get(0).tiles.get(1), "QH");
+        assertEqualToTile(game.players[1].melds.get(0).tiles.get(2), "KH");
+    }
+
+    private void assertEqualToTile(Tile tile, String jh) {
+        assertEquals(tile, new Tile(jh));
     }
 }

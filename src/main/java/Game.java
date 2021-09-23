@@ -13,5 +13,8 @@ public class Game {
         playerNumber++;
     }
 
-    public void draw() {currentPlayer++;}
+    public void draw() {
+        currentPlayer++;
+        System.out.println(currentPlayer);
+    }
 }
