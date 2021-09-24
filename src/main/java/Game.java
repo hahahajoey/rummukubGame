@@ -15,6 +15,8 @@ public class Game {
 
     public void draw() {
         currentPlayer++;
-        System.out.println(currentPlayer);
+        if (currentPlayer > playerNumber-1) {
+            currentPlayer = 0;
+        }
     }
 }
