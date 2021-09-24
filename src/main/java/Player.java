@@ -24,4 +24,8 @@ public class Player {
     public String toString() {
         return "Player " + name + ": " + melds.stream().map(Meld::toString).collect(Collectors.joining(" "));
     }
+
+    public void setHand(Hand hand) {
+
+    }
 }

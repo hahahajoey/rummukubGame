@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
 
@@ -47,7 +48,7 @@ public class AppTest {
 
     @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
     @Test
-    public void testPlayPlace2H_3H_4H7S_8S_9S() {
+    public void testPlayPlace2Melds() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
@@ -57,7 +58,7 @@ public class AppTest {
 
     @DisplayName("P1 plays {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}")
     @Test
-    public void testPlayPlace2H_2S_2D4C_4D_4S_4H5D_5S_5H() {
+    public void testPlayPlace3Melds() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"2H", "2S", "2D"}, new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
@@ -73,5 +74,28 @@ public class AppTest {
         game.players.get(0).place(new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {8H 8C 8D} {2H 3H 4H}");
+    }
+
+    @DisplayName("P1 plays {2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}")
+    @Test
+    public void testPlayPlace4Melds() {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+        game.players.get(0).place(new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {8H 8C 8D} {2H 3H 4H}");
+    }
+
+    @DisplayName("P1 plays {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D} and wins!")
+    @Test
+    public void testPlayPlaceAndWin() {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+        game.players.get(0).place(new String[]{"2H", "2S", "2C", "2D"}, new String[]{"3C", "4C", "5C", "6C", "7C"}, new String[]{"4D", "5D", "6D", "7D", "8D"});
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
+
+        game.players.get(0).setHand(new Hand());
+        assertTrue(game.win);
     }
 }

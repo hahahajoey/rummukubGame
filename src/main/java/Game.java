@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 public class Game {
     public ArrayList<Player> players;
     public int currentPlayer;
+    public boolean win;
     int playerNumber;
 
     public Game() {
