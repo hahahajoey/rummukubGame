@@ -9,8 +9,7 @@ public class Player {
         melds = new ArrayList<>();
     }
 
-    public void place(ArrayList<Tile> tiles) {
-        Meld meld = new Meld(tiles);
-        melds.add(meld);
+    public void place(String[] meld) {
+        melds.add(new Meld(meld));
     }
 }

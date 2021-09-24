@@ -4,8 +4,11 @@ import java.util.stream.Collectors;
 public class Meld {
     public ArrayList<Tile> tiles;
 
-    public Meld(ArrayList<Tile> tiles) {
-        this.tiles = tiles;
+    public Meld(String[] tiles) {
+        this.tiles = new ArrayList<>();
+        for (String tile : tiles) {
+            this.tiles.add(new Tile(tile));
+        }
     }
 
     @Override

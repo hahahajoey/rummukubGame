@@ -33,16 +33,11 @@ public class PlayerSequenceTest {
     @DisplayName("after P1 it is P2 who plays {JH QH KH}: this meld is on the table and seen by all players and hand of P2 is updated")
     @Test
     public void testP2FirstRound() {
-        ArrayList<Tile> tiles = new ArrayList<>();
-        tiles.add(new Tile("JH"));
-        tiles.add(new Tile("QH"));
-        tiles.add(new Tile("KH"));
-
         game.currentPlayer = 0;
         game.draw();
         assertEquals(game.currentPlayer, 1);
 
-        game.players[1].place(tiles);
+        game.players[1].place(new String[]{"JH", "QH", "KH"});
         assertEquals(game.players[1].melds.toString(), "[{JH QH KH}]");
     }
 
@@ -53,18 +48,18 @@ public class PlayerSequenceTest {
         game.draw();
         assertEquals(game.currentPlayer, 2);
 
-        ArrayList<Tile> tiles1 = new ArrayList<>();
-        tiles1.add(new Tile("KH"));
-        tiles1.add(new Tile("KS"));
-        tiles1.add(new Tile("KC"));
-        game.players[2].place(tiles1);
-
-        ArrayList<Tile> tiles2 = new ArrayList<>();
-        tiles2.add(new Tile("2C"));
-        tiles2.add(new Tile("2H"));
-        tiles2.add(new Tile("2D"));
-        game.players[2].place(tiles2);
+        game.players[2].place(new String[]{"KH", "KS", "KC"});
+        game.players[2].place(new String[]{"2C", "2H", "2D"});
 
         assertEquals(game.players[2].melds.toString(), "[{KH KS KC}, {2C 2H 2D}]");
     }
+
+//    @DisplayName("after P3 it is P1 who plays {QH QS QD}: there are now 4 melds on the table and the hand of P1 is updated")
+//    @Test
+//    public void testP1SecondRound() {
+//        game.currentPlayer = 2;
+//        game.draw();
+//        assertEquals(game.currentPlayer, 0);
+//
+//    }
 }
