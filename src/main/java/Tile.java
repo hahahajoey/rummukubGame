@@ -1,17 +1,22 @@
 import java.util.Objects;
 
 public class Tile {
-    public char number;
+    public String number;
     public char color;
 
     public Tile(String NumberColor) {
-        number = NumberColor.charAt(0);
+        if (NumberColor.charAt(1) == '0') {
+            number = "10";
+            color = NumberColor.charAt(2);
+            return;
+        }
+        number = String.valueOf(NumberColor.charAt(0));
         color = NumberColor.charAt(1);
     }
 
     @Override
     public String toString() {
-        return String.valueOf(number) + color;
+        return number + color;
     }
 
     @Override
