@@ -96,7 +96,7 @@ public class AppTest {
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
 
-        game.currentPlayer = 0;
+        game.currentPlayerNumber = 0;
         game.checking();
         assertTrue(game.win);
     }
@@ -109,12 +109,10 @@ public class AppTest {
         game.addPlayer(new Player("p2"));
         game.addPlayer(new Player("p3"));
 
-        game.nextTurn();
-        game.place(new String[]{"JH", "QH", "KH"});
-        game.nextTurn();
-        game.place(new String[]{"JS", "QS", "KS"});
-        game.nextTurn();
-        game.place(new String[]{"JD", "QD", "KD"});
+        game.players.get(0).place(new String[]{"JH", "QH", "KH"});
+        game.players.get(1).place(new String[]{"JS", "QS", "KS"});
+        game.players.get(2).place(new String[]{"JD", "QD", "KD"});
+        game.currentPlayerNumber = 2;
     }
 
     @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")

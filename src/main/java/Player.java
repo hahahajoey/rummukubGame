@@ -22,6 +22,10 @@ public class Player {
         }
     }
 
+    public void draw(String[] tiles) {
+        hand.add(tiles);
+    }
+
     @Override
     public String toString() {
         return "Player " + name + ": " + melds.stream().map(Meld::toString).collect(Collectors.joining(" "));

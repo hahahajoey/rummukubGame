@@ -22,7 +22,7 @@ public class PlayerSequenceTest {
     @Test
     public void testP1FirstRound() {
         game.nextTurn();
-        assertEquals(game.currentPlayer, 0);
+        assertEquals(game.currentPlayerNumber, 0);
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player Bob: \r\n" +
                 "   Player Alice: \r\n" +
@@ -32,9 +32,9 @@ public class PlayerSequenceTest {
     @DisplayName("after P1 it is P2 who plays {JH QH KH}: this meld is on the table and seen by all players and hand of P2 is updated")
     @Test
     public void testP2FirstRound() {
-        game.currentPlayer = 0;
+        game.currentPlayerNumber = 0;
         game.nextTurn();
-        assertEquals(game.currentPlayer, 1);
+        assertEquals(game.currentPlayerNumber, 1);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});
         assertEquals(game.toString(), "Melds:\r\n" +
@@ -46,9 +46,9 @@ public class PlayerSequenceTest {
     @DisplayName("after P2 it is P3 who plays {KH KS KC} and {2C 2H 2D}: there are now 3 melds on the table and hand of P3 is updated")
     @Test
     public void testP3FirstRound() {
-        game.currentPlayer = 1;
+        game.currentPlayerNumber = 1;
         game.nextTurn();
-        assertEquals(game.currentPlayer, 2);
+        assertEquals(game.currentPlayerNumber, 2);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});
         game.players.get(2).place(new String[]{"KH", "KS", "KC"});
@@ -63,9 +63,9 @@ public class PlayerSequenceTest {
     @DisplayName("after P3 it is P1 who plays {QH QS QD}: there are now 4 melds on the table and the hand of P1 is updated")
     @Test
     public void testP1SecondRound() {
-        game.currentPlayer = 2;
+        game.currentPlayerNumber = 2;
         game.nextTurn();
-        assertEquals(game.currentPlayer, 0);
+        assertEquals(game.currentPlayerNumber, 0);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});
         game.players.get(2).place(new String[]{"KH", "KS", "KC"});

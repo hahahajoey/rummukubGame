@@ -10,4 +10,10 @@ public class Hand {
     public boolean isEmpty() {
         return tiles.isEmpty();
     }
+
+    public void add(String[] tiles) {
+        for (String tile : tiles) {
+            this.tiles.add(new Tile(tile));
+        }
+    }
 }

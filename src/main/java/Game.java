@@ -3,13 +3,13 @@ import java.util.stream.Collectors;
 
 public class Game {
     public ArrayList<Player> players;
-    public int currentPlayer;
+    public int currentPlayerNumber;
     public boolean win;
     int playerNumber;
 
     public Game() {
         players = new ArrayList<>();
-        currentPlayer = -1;
+        currentPlayerNumber = -1;
         win = false;
     }
 
@@ -19,21 +19,26 @@ public class Game {
     }
 
     public void nextTurn() {
-        currentPlayer++;
-        if (currentPlayer > playerNumber - 1) {
-            currentPlayer = 0;
+        currentPlayerNumber++;
+        if (currentPlayerNumber > playerNumber - 1) {
+            currentPlayerNumber = 0;
         }
     }
 
     public void checking() {
-        win = players.get(currentPlayer).hand.isEmpty();
+        win = players.get(currentPlayerNumber).hand.isEmpty();
     }
 
-    public void draw(String[] strings) {
+    public void draw(String[] tiles) {
+        currentPlayer().draw(tiles);
     }
 
     public void place(String[] meld) {
+        currentPlayer().place(meld);
+    }
 
+    private Player currentPlayer() {
+        return players.get(currentPlayerNumber);
     }
 
     @Override
