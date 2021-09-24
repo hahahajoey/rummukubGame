@@ -13,6 +13,6 @@ public class Meld {
 
     @Override
     public String toString() {
-        return "{" + tiles.stream().map(tile -> tile.toString()).collect(Collectors.joining(" ")) + "}";
+        return "{" + tiles.stream().map(Tile::toString).collect(Collectors.joining(" ")) + "}";
     }
 }

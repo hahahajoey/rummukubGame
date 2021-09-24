@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Player {
     public ArrayList<Meld> melds;
@@ -11,5 +12,10 @@ public class Player {
 
     public void place(String[] meld) {
         melds.add(new Meld(meld));
+    }
+
+    @Override
+    public String toString() {
+        return "Player " + name + ": " + melds.stream().map(Meld::toString).collect(Collectors.joining(" "));
     }
 }
