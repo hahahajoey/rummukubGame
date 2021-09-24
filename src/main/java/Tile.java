@@ -5,6 +5,10 @@ public class Tile {
     public char color;
 
     public Tile(String NumberColor) {
+        if (NumberColor.length() == 1) {
+            number = NumberColor;
+            return;
+        }
         if (NumberColor.charAt(1) == '0') {
             number = "10";
             color = NumberColor.charAt(2);
@@ -16,7 +20,7 @@ public class Tile {
 
     @Override
     public String toString() {
-        return number + color;
+        return number + (color == 0 ? "" : String.valueOf(color));
     }
 
     @Override
