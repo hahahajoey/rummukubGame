@@ -163,19 +163,19 @@ public class AppTest {
                 "   Player p3: {JD QD KD}");
     }
 
-//    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
-//    @Test
-//    void testRound2P1Place2Set() {
-//        Game game = new Game();
-//        gameSetUp(game);
-//
-//        game.nextTurn();
-//        game.draw(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
-//        game.place(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
-//
-//        assertEquals(game.toString(), "Melds:\r\n" +
-//                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
-//                "   Player p2: {JS QS KS}\r\n" +
-//                "   Player p3: {JD QD KD}");
-//    }
+    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
+    @Test
+    void testRound2P1Place2Set() {
+        Game game = new Game();
+        gameSetUp(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
+        game.place(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
+
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}");
+    }
 }
