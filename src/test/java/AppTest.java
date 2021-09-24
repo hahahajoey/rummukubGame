@@ -44,4 +44,14 @@ public class AppTest {
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {KH KC KS K}");
     }
+
+    @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
+    @Test
+    public void TestPlayPlace2H_3H_4H7S_8S_9S() {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+        game.players.get(0).place(new String[]{"2H", "3H", "4H"},new String[]{"7S","8S","9S"});
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {2H 3H 4H} {7S 8S 9S}");
+    }
 }
