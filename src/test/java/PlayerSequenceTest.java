@@ -43,9 +43,7 @@ public class PlayerSequenceTest {
         assertEquals(game.currentPlayer, 1);
 
         game.players[1].place(tiles);
-        assertEqualToTile(game.players[1].melds.get(0).tiles.get(0), "JH");
-        assertEqualToTile(game.players[1].melds.get(0).tiles.get(1), "QH");
-        assertEqualToTile(game.players[1].melds.get(0).tiles.get(2), "KH");
+        assertEquals(game.players[1].melds.toString(), "[{JH QH KH}]");
     }
 
     @DisplayName("after P2 it is P3 who plays {KH KS KC} and {2C 2H 2D}: there are now 3 melds on the table and hand of P3 is updated")
@@ -67,10 +65,6 @@ public class PlayerSequenceTest {
         tiles2.add(new Tile("2D"));
         game.players[2].place(tiles2);
 
-        assertEquals(game.players[2].melds.toString(), "{KH KS KC}, {2C 2H 2D}");
-    }
-
-    private void assertEqualToTile(Tile tile, String jh) {
-        assertEquals(tile, new Tile(jh));
+        assertEquals(game.players[2].melds.toString(), "[{KH KS KC}, {2C 2H 2D}]");
     }
 }
