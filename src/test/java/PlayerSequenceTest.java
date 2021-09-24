@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlayerSequenceTest{
+public class PlayerSequenceTest {
     Game game;
 
     public PlayerSequenceTest() {
@@ -32,7 +32,7 @@ public class PlayerSequenceTest{
 
     @DisplayName("after P1 it is P2 who plays {JH QH KH}: this meld is on the table and seen by all players and hand of P2 is updated")
     @Test
-    public void testP2Plays() {
+    public void testP2FirstRound() {
         ArrayList<Tile> tiles = new ArrayList<>();
         tiles.add(new Tile("JH"));
         tiles.add(new Tile("QH"));
@@ -46,6 +46,28 @@ public class PlayerSequenceTest{
         assertEqualToTile(game.players[1].melds.get(0).tiles.get(0), "JH");
         assertEqualToTile(game.players[1].melds.get(0).tiles.get(1), "QH");
         assertEqualToTile(game.players[1].melds.get(0).tiles.get(2), "KH");
+    }
+
+    @DisplayName("after P2 it is P3 who plays {KH KS KC} and {2C 2H 2D}: there are now 3 melds on the table and hand of P3 is updated")
+    @Test
+    public void testP3FirstRound() {
+        game.currentPlayer = 1;
+        game.draw();
+        assertEquals(game.currentPlayer, 2);
+
+        ArrayList<Tile> tiles1 = new ArrayList<>();
+        tiles1.add(new Tile("KH"));
+        tiles1.add(new Tile("KS"));
+        tiles1.add(new Tile("KC"));
+        game.players[2].place(tiles1);
+
+        ArrayList<Tile> tiles2 = new ArrayList<>();
+        tiles2.add(new Tile("2C"));
+        tiles2.add(new Tile("2H"));
+        tiles2.add(new Tile("2D"));
+        game.players[2].place(tiles2);
+
+        assertEquals(game.players[2].melds.toString(), "{KH KS KC}, {2C 2H 2D}");
     }
 
     private void assertEqualToTile(Tile tile, String jh) {
