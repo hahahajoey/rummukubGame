@@ -7,7 +7,7 @@ public class Meld {
     public Meld(String[] tiles) {
         this.tiles = new ArrayList<>();
         for (String tile : tiles) {
-            this.tiles.add(new Tile(tile));
+            this.tiles.add(Tile.createTile(tile));
         }
     }
 

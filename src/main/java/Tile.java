@@ -4,18 +4,19 @@ public class Tile {
     public String number;
     public char color;
 
-    public Tile(String NumberColor) {
+    public static Tile createTile(String NumberColor) {
         if (NumberColor.length() == 1) {
-            number = NumberColor;
-            return;
+            return new Tile(NumberColor, '\0');
         }
         if (NumberColor.charAt(1) == '0') {
-            number = "10";
-            color = NumberColor.charAt(2);
-            return;
+            return new Tile("10", NumberColor.charAt(2));
         }
-        number = String.valueOf(NumberColor.charAt(0));
-        color = NumberColor.charAt(1);
+        return new Tile(String.valueOf(NumberColor.charAt(0)), NumberColor.charAt(1));
+    }
+
+    private Tile(String number, char color) {
+        this.number = number;
+        this.color = color;
     }
 
     @Override

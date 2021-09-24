@@ -25,7 +25,7 @@ public class Game {
         }
     }
 
-    public void checking() {
+    public void checkingWin() {
         win = players.get(currentPlayerNumber).hand.isEmpty();
     }
 

@@ -13,7 +13,7 @@ public class Hand {
 
     public void add(String[] tiles) {
         for (String tile : tiles) {
-            this.tiles.add(new Tile(tile));
+            this.tiles.add(Tile.createTile(tile));
         }
     }
 }
