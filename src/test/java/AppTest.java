@@ -96,7 +96,6 @@ public class AppTest {
                 "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
 
         game.currentPlayer = 0;
-        game.players.get(0).setHand(new Hand());
         game.CheakWin();
         assertTrue(game.win);
     }

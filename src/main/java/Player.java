@@ -8,7 +8,8 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        melds = new ArrayList<>();
+        this.melds = new ArrayList<>();
+        this.hand = new Hand();
     }
 
     public void place(String[] meld) {
@@ -24,9 +25,5 @@ public class Player {
     @Override
     public String toString() {
         return "Player " + name + ": " + melds.stream().map(Meld::toString).collect(Collectors.joining(" "));
-    }
-
-    public void setHand(Hand hand) {
-        this.hand = new Hand();
     }
 }
