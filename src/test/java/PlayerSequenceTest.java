@@ -48,18 +48,28 @@ public class PlayerSequenceTest {
         game.draw();
         assertEquals(game.currentPlayer, 2);
 
+        game.players[1].place(new String[]{"JH", "QH", "KH"});
         game.players[2].place(new String[]{"KH", "KS", "KC"});
         game.players[2].place(new String[]{"2C", "2H", "2D"});
 
+        assertEquals(game.players[1].melds.toString(), "[{JH QH KH}]");
         assertEquals(game.players[2].melds.toString(), "[{KH KS KC}, {2C 2H 2D}]");
     }
 
-//    @DisplayName("after P3 it is P1 who plays {QH QS QD}: there are now 4 melds on the table and the hand of P1 is updated")
-//    @Test
-//    public void testP1SecondRound() {
-//        game.currentPlayer = 2;
-//        game.draw();
-//        assertEquals(game.currentPlayer, 0);
-//
-//    }
+    @DisplayName("after P3 it is P1 who plays {QH QS QD}: there are now 4 melds on the table and the hand of P1 is updated")
+    @Test
+    public void testP1SecondRound() {
+        game.currentPlayer = 2;
+        game.draw();
+        assertEquals(game.currentPlayer, 0);
+
+        game.players[1].place(new String[]{"JH", "QH", "KH"});
+        game.players[2].place(new String[]{"KH", "KS", "KC"});
+        game.players[2].place(new String[]{"2C", "2H", "2D"});
+        game.players[0].place(new String[]{"QH", "QS", "QD"});
+
+        assertEquals(game.players[1].melds.toString(), "[{JH QH KH}]");
+        assertEquals(game.players[2].melds.toString(), "[{KH KS KC}, {2C 2H 2D}]");
+        assertEquals(game.players[0].melds.toString(), "[{QH QS QD}]");
+    }
 }
