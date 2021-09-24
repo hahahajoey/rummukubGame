@@ -14,11 +14,11 @@ public class Player {
         melds.add(new Meld(meld));
     }
 
-//    public void place(String[]... melds) {
-//        for (String[] meld : melds) {
-//            this.melds.add(new Meld(meld));
-//        }
-//    }
+    public void place(String[]... melds) {
+        for (String[] meld : melds) {
+            this.melds.add(new Meld(meld));
+        }
+    }
 
     @Override
     public String toString() {
