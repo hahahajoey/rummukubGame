@@ -33,21 +33,21 @@ public class Game {
         currentPlayer().draw(tiles);
     }
 
-//    public void draw(String[]... tiles) {
-//        for (String[] tile : tiles) {
-//            draw(tile);
-//        }
-//    }
+    public void draw(String[]... tiles) {
+        for (String[] tile : tiles) {
+            draw(tile);
+        }
+    }
 
     public void place(String[] meld) {
         currentPlayer().place(meld);
     }
 
-//    public void place(String[]... melds) {
-//        for (String[] meld : melds) {
-//            place(meld);
-//        }
-//    }
+    public void place(String[]... melds) {
+        for (String[] meld : melds) {
+            place(meld);
+        }
+    }
 
     private Player currentPlayer() {
         return players.get(currentPlayerNumber);
