@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Meld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Meld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Meld.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Meld.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +50,16 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerSequenceTest">
+  <component name="RunManager" selected="JUnit.AppTest">
+    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rummukubGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlayerSequenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
@@ -77,6 +81,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.PlayerSequenceTest" />
         <item itemvalue="JUnit.PlayerSequenceTest.P1FirstRound" />
       </list>
@@ -94,7 +99,7 @@
       <workItem from="1632244336491" duration="5381000" />
       <workItem from="1632413089736" duration="16227000" />
       <workItem from="1632433928181" duration="655000" />
-      <workItem from="1632494264125" duration="8068000" />
+      <workItem from="1632494264125" duration="9588000" />
     </task>
     <servers />
   </component>
