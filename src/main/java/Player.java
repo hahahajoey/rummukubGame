@@ -3,6 +3,7 @@ import java.util.stream.Collectors;
 
 public class Player {
     public ArrayList<Meld> melds;
+    public Hand hand;
     String name;
 
     public Player(String name) {
@@ -26,6 +27,6 @@ public class Player {
     }
 
     public void setHand(Hand hand) {
-
+        this.hand = new Hand();
     }
 }

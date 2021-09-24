@@ -10,6 +10,7 @@ public class Game {
     public Game() {
         players = new ArrayList<>();
         currentPlayer = -1;
+        win = false;
     }
 
     public void addPlayer(Player player) {
@@ -22,6 +23,10 @@ public class Game {
         if (currentPlayer > playerNumber - 1) {
             currentPlayer = 0;
         }
+    }
+
+    public void CheakWin() {
+        win = players.get(currentPlayer).hand.isEmpty();
     }
 
     @Override
