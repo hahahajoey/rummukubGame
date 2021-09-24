@@ -6,9 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
 
+    //initial 30 points: (each test assumes we are at the start of a new game)
     @DisplayName("P1 plays{JH QH KH}")
     @Test
-    public void testPlayPlaceJH_QH_KH() {
+    public void testPlayPlaceRun() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"JH", "QH", "KH"});
@@ -18,7 +19,7 @@ public class AppTest {
 
     @DisplayName("P1 play {QH QC QS}")
     @Test
-    public void testPlayPlaceQH_QC_QS() {
+    public void testPlayPlaceSet() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"QH", "QC", "QS"});
@@ -28,7 +29,7 @@ public class AppTest {
 
     @DisplayName("P1 plays {9H 10H JH QH KH}")
     @Test
-    public void testPlayPlace9H_10H_JH_QH_KH() {
+    public void testPlayPlaceLongRun() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"9H", "10H", "JH", "QH", "KH"});
@@ -38,7 +39,7 @@ public class AppTest {
 
     @DisplayName("P1 plays {KH KC KS K}")
     @Test
-    public void testPlayPlaceKH_KC_KS_K() {
+    public void testPlayPlaceLongSet() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"KH", "KC", "KS", "K"});
@@ -68,7 +69,7 @@ public class AppTest {
 
     @DisplayName("P1 plays {8H 8C 8D} {2H 3H 4H}")
     @Test
-    public void testPlayPlace8H_8C_8D2H_3H_4H() {
+    public void testPlayPlace2Run() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
         game.players.get(0).place(new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
@@ -96,7 +97,39 @@ public class AppTest {
                 "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
 
         game.currentPlayer = 0;
-        game.CheakWin();
+        game.checking();
         assertTrue(game.win);
+    }
+
+    //playing melds out of your hand after initial 30 (row 62 is the setup for each of the tests of row 63 to 68)
+
+    //setup for 1st turn P1 plays {JH QH KH}, P2 {JS QS KS} and P3 {JD QD KD}
+    private void gameSetUp(Game game) {
+        game.addPlayer(new Player("p1"));
+        game.addPlayer(new Player("p2"));
+        game.addPlayer(new Player("p3"));
+
+        game.nextTurn();
+        game.place(new String[]{"JH", "QH", "KH"});
+        game.nextTurn();
+        game.place(new String[]{"JS", "QS", "KS"});
+        game.nextTurn();
+        game.place(new String[]{"JD", "QD", "KD"});
+    }
+
+    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
+    @Test
+    void testRound2P1PlaceRun() {
+        Game game = new Game();
+        gameSetUp(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"2C", "3C", "4C"});
+        game.place(new String[]{"2C", "3C", "4C"});
+
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 3C 4C}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}");
     }
 }

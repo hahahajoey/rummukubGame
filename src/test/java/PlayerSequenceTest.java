@@ -21,7 +21,7 @@ public class PlayerSequenceTest {
     @DisplayName("P1 plays first and draws: all players still see the table empty")
     @Test
     public void testP1FirstRound() {
-        game.draw();
+        game.nextTurn();
         assertEquals(game.currentPlayer, 0);
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player Bob: \r\n" +
@@ -33,7 +33,7 @@ public class PlayerSequenceTest {
     @Test
     public void testP2FirstRound() {
         game.currentPlayer = 0;
-        game.draw();
+        game.nextTurn();
         assertEquals(game.currentPlayer, 1);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});
@@ -47,7 +47,7 @@ public class PlayerSequenceTest {
     @Test
     public void testP3FirstRound() {
         game.currentPlayer = 1;
-        game.draw();
+        game.nextTurn();
         assertEquals(game.currentPlayer, 2);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});
@@ -64,7 +64,7 @@ public class PlayerSequenceTest {
     @Test
     public void testP1SecondRound() {
         game.currentPlayer = 2;
-        game.draw();
+        game.nextTurn();
         assertEquals(game.currentPlayer, 0);
 
         game.players.get(1).place(new String[]{"JH", "QH", "KH"});

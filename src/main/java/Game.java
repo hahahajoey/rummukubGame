@@ -18,15 +18,22 @@ public class Game {
         playerNumber++;
     }
 
-    public void draw() {
+    public void nextTurn() {
         currentPlayer++;
         if (currentPlayer > playerNumber - 1) {
             currentPlayer = 0;
         }
     }
 
-    public void CheakWin() {
+    public void checking() {
         win = players.get(currentPlayer).hand.isEmpty();
+    }
+
+    public void draw(String[] strings) {
+    }
+
+    public void place(String[] meld) {
+
     }
 
     @Override
