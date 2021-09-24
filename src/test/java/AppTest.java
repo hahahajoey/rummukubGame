@@ -50,8 +50,18 @@ public class AppTest {
     public void TestPlayPlace2H_3H_4H7S_8S_9S() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"2H", "3H", "4H"},new String[]{"7S","8S","9S"});
+        game.players.get(0).place(new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {2H 3H 4H} {7S 8S 9S}");
+    }
+
+    @DisplayName("P1 plays {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}")
+    @Test
+    public void TestPlayPlace2H_2S_2D4C_4D_4S_4H5D_5S_5H() {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+        game.players.get(0).place(new String[]{"2H", "2S", "2D"}, new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}");
     }
 }

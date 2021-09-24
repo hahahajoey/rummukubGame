@@ -16,7 +16,7 @@ public class Player {
 
     public void place(String[]... melds) {
         for (String[] meld : melds) {
-            this.melds.add(new Meld(meld));
+            place(meld);
         }
     }
 
