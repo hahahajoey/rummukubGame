@@ -14,6 +14,12 @@ public class Hand {
         return tiles.isEmpty();
     }
 
+    public void add(Tile tile) {
+        this.tiles.add(tile);
+        tilesNumber++;
+        System.out.println(this.toString());
+    }
+
     public void add(String[] tiles) {
         for (String tile : tiles) {
             this.tiles.add(Tile.createTile(tile));

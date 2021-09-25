@@ -22,6 +22,10 @@ public class Player {
         }
     }
 
+    public void draw(Tile tile) {
+        hand.add(tile);
+    }
+
     public void draw(String[] tiles) {
         hand.add(tiles);
     }

@@ -5,11 +5,13 @@ public class Game {
     public ArrayList<Player> players;
     public int currentPlayerNumber;
     public boolean win;
+    public Deck deck;
     int playerNumber;
 
     public Game() {
         players = new ArrayList<>();
         currentPlayerNumber = -1;
+        deck = new Deck();
         win = false;
     }
 
@@ -30,6 +32,7 @@ public class Game {
     }
 
     public void draw() {
+        currentPlayer().draw(deck.draw());
     }
 
     public void draw(String[] tiles) {

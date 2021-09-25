@@ -235,6 +235,6 @@ public class AppTest {
 
         assertEquals(game.players.get(0).hand.toString(), "Hand :{QC 7H}");
         game.draw();
-        assertTrue(game.players.get(0).hand.tilesNumber > 2);
+        assertEquals(game.players.get(0).hand.tilesNumber, 3);
     }
 }
