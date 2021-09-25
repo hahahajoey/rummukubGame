@@ -7,8 +7,7 @@
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/AppTest.class" afterDir="false" />
     </list>
@@ -55,7 +54,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest.testDrawTile2">
+  <component name="RunManager" selected="JUnit.AppTest">
     <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
@@ -106,9 +105,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.AppTest.testDrawTile2" />
         <item itemvalue="JUnit.AppTest.testDrawTile" />
-        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.PlayerSequenceTest" />
         <item itemvalue="JUnit.PlayerSequenceTest.P1FirstRound" />
       </list>
@@ -128,7 +127,7 @@
       <workItem from="1632433928181" duration="655000" />
       <workItem from="1632494264125" duration="17345000" />
       <workItem from="1632519779045" duration="18522000" />
-      <workItem from="1632582946567" duration="13830000" />
+      <workItem from="1632582946567" duration="17206000" />
     </task>
     <servers />
   </component>

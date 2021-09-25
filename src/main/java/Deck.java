@@ -5,8 +5,7 @@ public class Deck {
     public LinkedList<Tile> tiles;
 
     public Deck() {
-        tiles = new LinkedList<>();
-        generateDeck(tiles);
+        tiles = generateDeck();
         Collections.shuffle(tiles);
     }
 
@@ -16,18 +15,20 @@ public class Deck {
 
     public String[] draw(String[] tiles) {
         for (String tile : tiles) {
-            Iterator<Tile> iterator = this.tiles.iterator();
-            while (iterator.hasNext()) {
-                Tile temp = iterator.next();
-                if (temp.equals(Tile.createTile(tile))) {
-                    iterator.remove();
-                    break;
-                }
+            removeFromDeck(tile);
+        }
+        return tiles;
+    }
+
+    private void removeFromDeck(String tile) {
+        Iterator<Tile> iterator = this.tiles.iterator();
+        while (iterator.hasNext()) {
+            Tile temp = iterator.next();
+            if (temp.equals(Tile.createTile(tile))) {
+                iterator.remove();
+                break;
             }
         }
-        System.out.println(this.tiles.size());
-        System.out.println(this);
-        return tiles;
     }
 
     @Override
@@ -35,7 +36,8 @@ public class Deck {
         return "Deck :" + "{" + tiles.stream().map(Tile::toString).collect(Collectors.joining(" ")) + "}";
     }
 
-    private void generateDeck(List<Tile> tiles) {
+    private LinkedList<Tile> generateDeck() {
+        LinkedList<Tile> tiles = new LinkedList<>();
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         char[] colors = {'D', 'H', 'S', 'C'};
         for (int i = 0; i < 2; i++) {
@@ -47,5 +49,6 @@ public class Deck {
         }
         tiles.add(Tile.createTile("*"));
         tiles.add(Tile.createTile("*"));
+        return tiles;
     }
 }

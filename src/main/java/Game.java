@@ -1,3 +1,4 @@
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -62,5 +63,9 @@ public class Game {
     @Override
     public String toString() {
         return "Melds:\r\n   " + players.stream().map(player -> player.toString()).collect(Collectors.joining("\r\n   "));
+    }
+
+    public String scoreBoard() {
+        return "";
     }
 }
