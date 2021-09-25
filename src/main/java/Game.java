@@ -29,6 +29,9 @@ public class Game {
         win = players.get(currentPlayerNumber).hand.isEmpty();
     }
 
+    public void draw() {
+    }
+
     public void draw(String[] tiles) {
         currentPlayer().draw(tiles);
     }
