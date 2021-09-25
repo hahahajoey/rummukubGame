@@ -1,10 +1,5 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -87,6 +82,62 @@ public class AppTest {
 
     //playing melds out of your hand after initial 30 (row 62 is the setup for each of the tests of row 63 to 68)
 
+    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
+    @Test
+    void testRound2P1PlaceRun() {
+        testPlacementAtRound2("Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 3C 4C}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}", new String[]{"2C", "3C", "4C"});
+    }
+
+    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} {8D 9D 10D} from hand")
+    @Test
+    void testRound2P1Place2Run() {
+        testPlacementAtRound2("Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 3C 4C} {8D 9D 10D}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}", new String[]{"2C", "3C", "4C"}, new String[]{"8D", "9D", "10D"});
+    }
+
+    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} from hand")
+    @Test
+    void testRound2P1PlaceSet() {
+        testPlacementAtRound2("Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 2H 2D}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"});
+    }
+
+    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
+    @Test
+    void testRound2P1Place2Set() {
+        testPlacementAtRound2("Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
+    }
+
+    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 9D 10D} from hand")
+    @Test
+    void testRound2P1PlaceRunSet() {
+        testPlacementAtRound2("Melds:\r\n" +
+                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 9D 10D}\r\n" +
+                "   Player p2: {JS QS KS}\r\n" +
+                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"8D", "9D", "10D"});
+    }
+
+    private void testPlacementAtRound2(String output, String[]... input) {
+        Game game = new Game();
+        gameSetUpForFirstRound(game);
+
+        game.nextTurn();
+        game.draw(input);
+        game.place(input);
+
+        assertEquals(game.toString(), output);
+    }
+
     //setup for 1st turn P1 plays {JH QH KH}, P2 {JS QS KS} and P3 {JD QD KD}
     private void gameSetUpForFirstRound(Game game) {
         game.addPlayer(new Player("p1"));
@@ -99,100 +150,14 @@ public class AppTest {
         game.currentPlayerNumber = 2;
     }
 
-    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
-    @Test
-    void testRound2P1PlaceRun() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "3C", "4C"});
-        game.place(new String[]{"2C", "3C", "4C"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 3C 4C}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} {8D 9D 10D} from hand")
-    @Test
-    void testRound2P1Place2Run() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "3C", "4C"}, new String[]{"8D", "9D", "10D"});
-        game.place(new String[]{"2C", "3C", "4C"}, new String[]{"8D", "9D", "10D"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 3C 4C} {8D 9D 10D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} from hand")
-    @Test
-    void testRound2P1PlaceSet() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "2H", "2D"});
-        game.place(new String[]{"2C", "2H", "2D"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
-    @Test
-    void testRound2P1Place2Set() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
-        game.place(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 9D 10D} from hand")
-    @Test
-    void testRound2P1PlaceRunSet() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "9D", "10D"});
-        game.place(new String[]{"2C", "2H", "2D"}, new String[]{"8D", "9D", "10D"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 9D 10D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
-    }
-
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H} from hand")
     @Test
     void testRound2P1Place4Meld() {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"}, new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
-        game.place(new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"}, new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}");
+        testPlacementAtRound2("Melds:\r\n" +
+                        "   Player p1: {JH QH KH} {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H}\r\n" +
+                        "   Player p2: {JS QS KS}\r\n" +
+                        "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"},
+                new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
     }
 
     @DisplayName("a player having or choosing to draw a tile (2 tests, each starting a new game and then chooses to draw")
