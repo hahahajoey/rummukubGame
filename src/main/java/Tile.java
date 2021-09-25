@@ -29,7 +29,7 @@ public class Tile {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Tile tile = (Tile) object;
-        return number == tile.number && color == tile.color;
+        return number.equals(tile.number) && color == tile.color;
     }
 
     @Override

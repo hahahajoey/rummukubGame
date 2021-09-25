@@ -238,10 +238,9 @@ public class AppTest {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
 
-        game.players.get(0).draw(new String[]{"2C", "2C", "2D", "3H", "3S", "3S", "5H", "6S", "7D", "9H", "10H", "JC", "QS", "KS"});
         game.currentPlayerNumber = 2;
-
         game.nextTurn();
+        game.draw(new String[]{"2C", "2C", "2D", "3H", "3S", "3S", "5H", "6S", "7D", "9H", "10H", "JC", "QS", "KS"});
 
         assertEquals(game.players.get(0).hand.toString(), "Hand :{2C 2C 2D 3H 3S 3S 5H 6S 7D 9H 10H JC QS KS}");
         Tile drawnTile = game.draw();

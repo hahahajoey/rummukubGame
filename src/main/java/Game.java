@@ -36,7 +36,7 @@ public class Game {
     }
 
     public void draw(String[] tiles) {
-        currentPlayer().draw(tiles);
+        currentPlayer().draw(deck.draw(tiles));
     }
 
     public void draw(String[]... tiles) {
