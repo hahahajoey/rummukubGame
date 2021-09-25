@@ -16,8 +16,8 @@ public class Hand {
 
     public Tile add(Tile tile) {
         tilesNumber++;
-        System.out.println(this.toString());
         this.tiles.add(tile);
+        System.out.println(this.toString());
         return tile;
     }
 
