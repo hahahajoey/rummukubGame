@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,68 +12,63 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppTest {
 
     //initial 30 points: (each test assumes we are at the start of a new game)
+
+    private void testPlacement(String output, String[]... input) {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+        game.players.get(0).place(input);
+        assertEquals(game.toString(), "Melds:\r\n" + "   Player p1: " +
+                output);
+    }
+
     @DisplayName("P1 plays{JH QH KH}")
     @Test
     void testPlayPlaceRun() {
-        testPlacement("   Player p1: {JH QH KH}", new String[]{"JH", "QH", "KH"});
+        testPlacement("{JH QH KH}", new String[]{"JH", "QH", "KH"});
     }
 
     @DisplayName("P1 play {QH QC QS}")
     @Test
     void testPlayPlaceSet() {
-        testPlacement("   Player p1: {QH QC QS}", new String[]{"QH", "QC", "QS"});
+        testPlacement("{QH QC QS}", new String[]{"QH", "QC", "QS"});
     }
 
     @DisplayName("P1 plays {9H 10H JH QH KH}")
     @Test
     void testPlayPlaceLongRun() {
-        testPlacement("   Player p1: {9H 10H JH QH KH}", new String[]{"9H", "10H", "JH", "QH", "KH"});
+        testPlacement("{9H 10H JH QH KH}", new String[]{"9H", "10H", "JH", "QH", "KH"});
     }
 
     @DisplayName("P1 plays {KH KC KS K}")
     @Test
     void testPlayPlaceLongSet() {
-        testPlacement("   Player p1: {KH KC KS K}", new String[]{"KH", "KC", "KS", "K"});
+        testPlacement("{KH KC KS K}", new String[]{"KH", "KC", "KS", "K"});
     }
 
     @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
     @Test
     void testPlayPlace2Melds() {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {2H 3H 4H} {7S 8S 9S}");
+        testPlacement("{2H 3H 4H} {7S 8S 9S}", new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
     }
 
     @DisplayName("P1 plays {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}")
     @Test
     void testPlayPlace3Melds() {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"2H", "2S", "2D"}, new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}");
+        testPlacement("{2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}", new String[]{"2H", "2S", "2D"},
+                new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
     }
 
     @DisplayName("P1 plays {8H 8C 8D} {2H 3H 4H}")
     @Test
     void testPlayPlace2Run() {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {8H 8C 8D} {2H 3H 4H}");
+        testPlacement("{8H 8C 8D} {2H 3H 4H}", new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
     }
 
     @DisplayName("P1 plays {2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}")
     @Test
     void testPlayPlace4Melds() {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {8H 8C 8D} {2H 3H 4H}");
+        testPlacement("{2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}", new String[]{"2H", "2D", "2S"}, new String[]{"2C", "3C", "4C"},
+                new String[]{"3H", "3S", "3D"}, new String[]{"5S", "6S", "7S"});
     }
 
     @DisplayName("P1 plays {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D} and wins!")
@@ -81,17 +81,9 @@ public class AppTest {
                 "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
 
         game.currentPlayerNumber = 0;
-        game.checkingWin();
-        assertTrue(game.win);
+        assertGameWin(game);
     }
 
-    private void testPlacement(String output, String[]... input) {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(input);
-        assertEquals(game.toString(), "Melds:\r\n" +
-                output);
-    }
 
     //playing melds out of your hand after initial 30 (row 62 is the setup for each of the tests of row 63 to 68)
 
@@ -259,29 +251,34 @@ public class AppTest {
 
         game.nextTurn();
         game.draw(new String[]{"2H"});
-        game.checkingWin();
-        assertFalse(game.win);
+        assertGameNotWin(game);
 
         game.nextTurn();
         game.draw(new String[]{"5C"});
-        game.checkingWin();
-        assertFalse(game.win);
+        assertGameNotWin(game);
 
         game.nextTurn();
         game.place(new String[]{"10H", "JH", "QH", "KH"}, new String[]{"10S", "JS", "QS", "KS"});
-        game.checkingWin();
-        assertFalse(game.win);
+        assertGameNotWin(game);
 
         game.nextTurn();
         game.place(new String[]{"2C", "2D", "2H"});
-        game.checkingWin();
-        assertFalse(game.win);
+        assertGameNotWin(game);
 
         game.nextTurn();
         game.place(new String[]{"2H", "2S", "2C", "2D"}, new String[]{"3C", "4C", "5C", "6C", "7C"}, new String[]{"4D", "5D", "6D", "7D", "8D"});
-        game.checkingWin();
-        assertTrue(game.win);
+        assertGameWin(game);
 
         assertEquals(game.scoreBoard(), "Score: P1:-78, P2: 0, P3:-38");
+    }
+
+    private void assertGameWin(Game game) {
+        game.checkingWin();
+        assertTrue(game.win);
+    }
+
+    private void assertGameNotWin(Game game) {
+        game.checkingWin();
+        assertFalse(game.win);
     }
 }
