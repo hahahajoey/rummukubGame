@@ -31,8 +31,8 @@ public class Game {
         win = players.get(currentPlayerNumber).hand.isEmpty();
     }
 
-    public void draw() {
-        currentPlayer().draw(deck.draw());
+    public Tile draw() {
+        return currentPlayer().draw(deck.draw());
     }
 
     public void draw(String[] tiles) {

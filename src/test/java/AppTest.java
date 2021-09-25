@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 public class AppTest {
 
     //initial 30 points: (each test assumes we are at the start of a new game)
@@ -211,22 +211,16 @@ public class AppTest {
                 "   Player p3: {JD QD KD}");
     }
 
-    //a player having or choosing to draw a tile (2 tests, each starting a new game)
-
-    //P1 starts with {2C 2H 2D}  {3C 3H 3D} {8D 9D 10D} {8H 9H 10H} QC 7H in hand
-    private void gameSetUpForP1MeldAndHand(Game game) {
-        game.addPlayer(new Player("p1"));
-
-        game.players.get(0).place(new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"}, new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
-        game.players.get(0).draw(new String[]{"QC", "7H"});
-        game.currentPlayerNumber = 2;
-    }
-
-    @DisplayName("and then chooses to draw")
+    @DisplayName("a player having or choosing to draw a tile (2 tests, each starting a new game and then chooses to draw")
     @Test
     void testDrawTile() {
         Game game = new Game();
-        gameSetUpForP1MeldAndHand(game);
+        game.addPlayer(new Player("p1"));
+
+        game.players.get(0).place(new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"},
+                new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
+        game.players.get(0).draw(new String[]{"QC", "7H"});
+        game.currentPlayerNumber = 2;
 
         game.nextTurn();
 
@@ -236,5 +230,23 @@ public class AppTest {
         assertEquals(game.players.get(0).hand.toString(), "Hand :{QC 7H}");
         game.draw();
         assertEquals(game.players.get(0).hand.tilesNumber, 3);
+    }
+
+    @DisplayName("P1 starts with 2C 2C 2D 3H 3S 3S 5H 6S 7D 9H 10H JC QS KS and has to draw")
+    @Test
+    void testDrawTile2() {
+        Game game = new Game();
+        game.addPlayer(new Player("p1"));
+
+        game.players.get(0).draw(new String[]{"2C", "2C", "2D", "3H", "3S", "3S", "5H", "6S", "7D", "9H", "10H", "JC", "QS", "KS"});
+        game.currentPlayerNumber = 2;
+
+        game.nextTurn();
+
+        assertEquals(game.players.get(0).hand.toString(), "Hand :{2C 2C 2D 3H 3S 3S 5H 6S 7D 9H 10H JC QS KS}");
+        Tile drawnTile = game.draw();
+        assertNotEquals(drawnTile, Tile.createTile("2C").toString());
+        assertNotEquals(drawnTile, Tile.createTile("3S").toString());
+        assertEquals(game.players.get(0).hand.tilesNumber, 15);
     }
 }
