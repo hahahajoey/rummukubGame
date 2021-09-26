@@ -1,4 +1,3 @@
-import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -30,6 +29,11 @@ public class Game {
 
     public void checkingWin() {
         win = players.get(currentPlayerNumber).hand.isEmpty();
+        if (win) {
+            for (Player player : players) {
+                player.score -= player.hand.sum();
+            }
+        }
     }
 
     public Tile draw() {
@@ -66,6 +70,6 @@ public class Game {
     }
 
     public String scoreBoard() {
-        return "";
+        return "Score: " + players.stream().map(player -> player.name + ":" + player.score).collect(Collectors.joining(", "));
     }
 }

@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,16 +70,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testDrawTile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rummukubGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AppTest" />
-      <option name="METHOD_NAME" value="testDrawTile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AppTest.testDrawTile2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
@@ -92,6 +90,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AppTest.testScore" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rummukubGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="METHOD_NAME" value="testScore" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlayerSequenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
@@ -104,10 +112,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="JUnit.AppTest.testScore" />
+        <item itemvalue="JUnit.PlayerSequenceTest" />
         <item itemvalue="JUnit.AppTest.testPlayPlaceRun" />
         <item itemvalue="JUnit.AppTest.testDrawTile2" />
-        <item itemvalue="JUnit.AppTest.testDrawTile" />
-        <item itemvalue="JUnit.PlayerSequenceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +133,8 @@
       <workItem from="1632433928181" duration="655000" />
       <workItem from="1632494264125" duration="17345000" />
       <workItem from="1632519779045" duration="18522000" />
-      <workItem from="1632582946567" duration="20162000" />
+      <workItem from="1632582946567" duration="30506000" />
+      <workItem from="1632671716861" duration="1599000" />
     </task>
     <servers />
   </component>

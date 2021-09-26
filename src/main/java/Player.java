@@ -4,15 +4,18 @@ import java.util.stream.Collectors;
 public class Player {
     public ArrayList<Meld> melds;
     public Hand hand;
+    public int score;
     String name;
 
     public Player(String name) {
         this.name = name;
         this.melds = new ArrayList<>();
         this.hand = new Hand();
+        this.score = 0;
     }
 
     public void place(String[] meld) {
+        hand.fold(meld);
         melds.add(new Meld(meld));
     }
 

@@ -19,6 +19,19 @@ public class Tile {
         this.color = color;
     }
 
+    public int getNumber() {
+        switch(number){
+            case "J" :
+            case "K" :
+            case "Q" :
+                return 10;
+            case "A" :
+                return 1;
+            default :
+                return Integer.valueOf(number);
+        }
+    }
+
     @Override
     public String toString() {
         return number + (color == 0 ? "" : String.valueOf(color));

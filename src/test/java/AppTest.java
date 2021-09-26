@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,13 +12,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppTest {
 
     //initial 30 points: (each test assumes we are at the start of a new game)
-
     private void testPlacement(String output, String[]... input) {
         Game game = new Game();
-        game.addPlayer(new Player("p1"));
+        addPlayer(game);
         game.players.get(0).place(input);
         assertEquals(game.toString(), "Melds:\r\n" + "   Player p1: " +
-                output);
+                output + "\r\n   Player p2: \r\n" +
+                "   Player p3: ");
+    }
+
+    private void addPlayer(Game game) {
+        game.addPlayer(new Player("p1"));
+        game.addPlayer(new Player("p2"));
+        game.addPlayer(new Player("p3"));
     }
 
     @DisplayName("P1 plays{JH QH KH}")
@@ -34,10 +45,10 @@ public class AppTest {
         testPlacement("{9H 10H JH QH KH}", new String[]{"9H", "10H", "JH", "QH", "KH"});
     }
 
-    @DisplayName("P1 plays {KH KC KS K}")
+    @DisplayName("P1 plays {KH KC KS KD}")
     @Test
     void testPlayPlaceLongSet() {
-        testPlacement("{KH KC KS K}", new String[]{"KH", "KC", "KS", "K"});
+        testPlacement("{KH KC KS KD}", new String[]{"KH", "KC", "KS", "KD"});
     }
 
     @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
@@ -79,8 +90,28 @@ public class AppTest {
         assertGameWin(game);
     }
 
-
     //playing melds out of your hand after initial 30 (row 62 is the setup for each of the tests of row 63 to 68)
+
+    private void testPlacementAtRound2(String output, String[]... input) {
+        Game game = new Game();
+        gameSetUpForFirstRound(game);
+
+        game.nextTurn();
+        game.draw(input);
+        game.place(input);
+
+        assertEquals(game.toString(), output);
+    }
+
+    //setup for 1st turn P1 plays {JH QH KH}, P2 {JS QS KS} and P3 {JD QD KD}
+    private void gameSetUpForFirstRound(Game game) {
+        addPlayer(game);
+
+        game.players.get(0).place(new String[]{"JH", "QH", "KH"});
+        game.players.get(1).place(new String[]{"JS", "QS", "KS"});
+        game.players.get(2).place(new String[]{"JD", "QD", "KD"});
+        game.currentPlayerNumber = 2;
+    }
 
     @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
     @Test
@@ -125,29 +156,6 @@ public class AppTest {
                 "   Player p1: {JH QH KH} {2C 2H 2D} {8D 9D 10D}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
                 "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"8D", "9D", "10D"});
-    }
-
-    private void testPlacementAtRound2(String output, String[]... input) {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(input);
-        game.place(input);
-
-        assertEquals(game.toString(), output);
-    }
-
-    //setup for 1st turn P1 plays {JH QH KH}, P2 {JS QS KS} and P3 {JD QD KD}
-    private void gameSetUpForFirstRound(Game game) {
-        game.addPlayer(new Player("p1"));
-        game.addPlayer(new Player("p2"));
-        game.addPlayer(new Player("p3"));
-
-        game.players.get(0).place(new String[]{"JH", "QH", "KH"});
-        game.players.get(1).place(new String[]{"JS", "QS", "KS"});
-        game.players.get(2).place(new String[]{"JD", "QD", "KD"});
-        game.currentPlayerNumber = 2;
     }
 
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H} from hand")
@@ -203,9 +211,7 @@ public class AppTest {
     @Test
     void testScore() {
         Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.addPlayer(new Player("p2"));
-        game.addPlayer(new Player("p3"));
+        addPlayer(game);
 
         game.currentPlayerNumber = 0;
         game.draw(new String[]{"2C", "2C", "2D", "3H", "3S", "3S", "5H", "6S", "7D", "9H", "10H", "JC", "QS", "KS"});
@@ -234,7 +240,7 @@ public class AppTest {
         game.place(new String[]{"2H", "2S", "2C", "2D"}, new String[]{"3C", "4C", "5C", "6C", "7C"}, new String[]{"4D", "5D", "6D", "7D", "8D"});
         assertGameWin(game);
 
-        assertEquals(game.scoreBoard(), "Score: P1:-78, P2: 0, P3:-38");
+        assertEquals(game.scoreBoard(), "Score: p1:-78, p2:0, p3:-38");
     }
 
     private void assertGameWin(Game game) {
