@@ -72,6 +72,10 @@ public class Game {
         currentPlayer().place(Stream.concat(Stream.of(tiles), Stream.of(reuseTile)).toArray(String[]::new));
     }
 
+    public String reuse(int playerNumber, int meldNumber, String tile) {
+        return players.get(playerNumber).reuse(meldNumber,tile);
+    }
+
     private Player currentPlayer() {
         return players.get(currentPlayerNumber);
     }

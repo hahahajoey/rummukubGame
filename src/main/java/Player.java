@@ -16,7 +16,7 @@ public class Player {
 
     public void place(String[] meld) {
         hand.fold(meld);
-        melds.add(new Meld(meld));
+        melds.add(Meld.createMeld(meld));
     }
 
     public void place(String[]... melds) {
@@ -31,6 +31,21 @@ public class Player {
 
     public void draw(String[] tiles) {
         hand.add(tiles);
+    }
+
+    public String reuse(int meldNumber, String tile) {
+        Meld meld = melds.get(meldNumber);
+        if (meld instanceof Set) {
+            return meld.reuse(tile);
+        }
+        int location = meld.locationForTile(tile);
+        if (location == 0 || location == meld.size() - 1) {
+            return meld.reuse(tile);
+        }
+        melds.remove(meld);
+        melds.add(meld.subMeld(0, location));
+        melds.add(meld.subMeld(location + 1, meld.size()));
+        return tile;
     }
 
     @Override
