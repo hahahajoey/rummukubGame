@@ -36,7 +36,7 @@ public class PlayerSequenceTest {
         game.nextTurn();
         assertEquals(game.currentPlayerNumber, 1);
 
-        game.players.get(1).place(new String[]{"JH", "QH", "KH"});
+        game.place(new String[]{"JH", "QH", "KH"});
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player Bob: \r\n" +
                 "   Player Alice: {JH QH KH}\r\n" +
@@ -46,13 +46,13 @@ public class PlayerSequenceTest {
     @DisplayName("after P2 it is P3 who plays {KH KS KC} and {2C 2H 2D}: there are now 3 melds on the table and hand of P3 is updated")
     @Test
     public void testP3FirstRound() {
-        game.currentPlayerNumber = 1;
+        game.currentPlayerNumber = 0;
+        game.nextTurn();
+        game.place(new String[]{"JH", "QH", "KH"});
+
         game.nextTurn();
         assertEquals(game.currentPlayerNumber, 2);
-
-        game.players.get(1).place(new String[]{"JH", "QH", "KH"});
-        game.players.get(2).place(new String[]{"KH", "KS", "KC"});
-        game.players.get(2).place(new String[]{"2C", "2H", "2D"});
+        game.place(new String[]{"KH", "KS", "KC"}, new String[]{"2C", "2H", "2D"});
 
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player Bob: \r\n" +
@@ -63,14 +63,15 @@ public class PlayerSequenceTest {
     @DisplayName("after P3 it is P1 who plays {QH QS QD}: there are now 4 melds on the table and the hand of P1 is updated")
     @Test
     public void testP1SecondRound() {
-        game.currentPlayerNumber = 2;
+        game.currentPlayerNumber = 0;
         game.nextTurn();
-        assertEquals(game.currentPlayerNumber, 0);
+        game.place(new String[]{"JH", "QH", "KH"});
+        game.nextTurn();
+        game.place(new String[]{"KH", "KS", "KC"}, new String[]{"2C", "2H", "2D"});
+        game.nextTurn();
 
-        game.players.get(1).place(new String[]{"JH", "QH", "KH"});
-        game.players.get(2).place(new String[]{"KH", "KS", "KC"});
-        game.players.get(2).place(new String[]{"2C", "2H", "2D"});
-        game.players.get(0).place(new String[]{"QH", "QS", "QD"});
+        assertEquals(game.currentPlayerNumber, 0);
+        game.place(new String[]{"QH", "QS", "QD"});
 
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player Bob: {QH QS QD}\r\n" +

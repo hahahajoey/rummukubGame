@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Game {
     public ArrayList<Player> players;
@@ -44,6 +45,12 @@ public class Game {
         currentPlayer().draw(deck.draw(tiles));
     }
 
+    public void draw(int times) {
+        for (int i = 0; i < times; i++) {
+            draw();
+        }
+    }
+
     public void draw(String[]... tiles) {
         for (String[] tile : tiles) {
             draw(tile);
@@ -58,6 +65,11 @@ public class Game {
         for (String[] meld : melds) {
             place(meld);
         }
+    }
+
+    public void placeAndReuse(String[] tiles, String... reuseTile) {
+        currentPlayer().draw(reuseTile);
+        currentPlayer().place(Stream.concat(Stream.of(tiles), Stream.of(reuseTile)).toArray(String[]::new));
     }
 
     private Player currentPlayer() {
