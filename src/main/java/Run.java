@@ -18,6 +18,6 @@ public class Run extends Meld {
         for (String tile : meld) {
             tiles.add(Tile.createTile(tile));
         }
-        tiles = tiles.stream().sorted((a,b) -> a.number.compareTo(b.number)).collect(Collectors.toList());
+        tiles = tiles.stream().sorted((a,b) -> a.getNumber() - b.getNumber()).collect(Collectors.toList());
     }
 }

@@ -173,7 +173,35 @@ public class TableReuseTest {
         game.placeAndReuse(new String[]{"QS", "KS"}, game.reuse(0, 0, "JS"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JC} {QS KS JS}\r\n" +
-                "   Player p2: {AC KC QC}\r\n" +
+                "   Player p2: {AC QC KC}\r\n" +
                 "   Player p3: {4H 4C 4S} {5H 6H 7H}");
+    }
+
+    @DisplayName("video simple 2")
+    @Test
+    void testVideoSimple2() {
+        Game game = new Game();
+        addPlayer(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"JD", "JS", "JC"});
+        game.place(new String[]{"JD", "JS", "JC"});
+
+        game.nextTurn();
+        game.draw(new String[]{"QD", "QS", "QC"});
+        game.place(new String[]{"QD", "QS", "QC"});
+
+        game.nextTurn();
+        game.draw(new String[]{"7H", "8H", "9H", "10H", "JH", "QH"});
+        game.place(new String[]{"7H", "8H", "9H", "10H", "JH", "QH"});
+
+        game.nextTurn();
+        game.draw(new String[]{"10C", "10S", "KH"});
+        game.insertFromHand(new String[]{"KH"}, 2, 0);
+        game.placeAndReuse(new String[]{"10C", "10S"}, game.reuse(2, 0, "10H"));
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JD JS JC} {10C 10S 10H}\r\n" +
+                "   Player p2: {QD QS QC}\r\n" +
+                "   Player p3: {7H 8H 9H} {JH QH KH}");
     }
 }
