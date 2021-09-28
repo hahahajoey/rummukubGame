@@ -7,4 +7,11 @@ public class Set extends Meld {
             this.tiles.add(Tile.createTile(tile));
         }
     }
+
+    @Override
+    public void insert(String[] meld) {
+        for (String tile : meld) {
+            this.tiles.add(Tile.createTile(tile));
+        }
+    }
 }

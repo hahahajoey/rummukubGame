@@ -33,6 +33,10 @@ public class Player {
         hand.add(tiles);
     }
 
+    public void insert(String[] meld, int meldNumber) {
+        melds.get(meldNumber).insert(meld);
+    }
+
     public String reuse(int meldNumber, String tile) {
         Meld meld = melds.get(meldNumber);
         if (meld instanceof Set) {

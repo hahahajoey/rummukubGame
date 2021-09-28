@@ -6,16 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Meld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Meld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Set.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Deck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +65,12 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerSequenceTest">
+  <component name="RunManager" selected="JUnit.TableReuseTest">
     <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AppTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest.testPlayPlaceRun" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rummukubGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AppTest" />
-      <option name="METHOD_NAME" value="testPlayPlaceRun" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,13 +103,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableReuseTest.testReuseMakeSetFromSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rummukubGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TableReuseTest" />
+      <option name="METHOD_NAME" value="testReuseMakeSetFromSet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerSequenceTest" />
-        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.TableReuseTest" />
+        <item itemvalue="JUnit.TableReuseTest.testReuseMakeSetFromSet" />
+        <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="JUnit.PlayerSequenceTest" />
         <item itemvalue="JUnit.AppTest.testScore" />
-        <item itemvalue="JUnit.AppTest.testPlayPlaceRun" />
       </list>
     </recent_temporary>
   </component>
@@ -145,7 +142,8 @@
       <workItem from="1632710417969" duration="463000" />
       <workItem from="1632763862569" duration="1610000" />
       <workItem from="1632773468183" duration="1211000" />
-      <workItem from="1632793485869" duration="739000" />
+      <workItem from="1632793485869" duration="2038000" />
+      <workItem from="1632843671813" duration="8729000" />
     </task>
     <servers />
   </component>

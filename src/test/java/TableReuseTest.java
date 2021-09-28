@@ -119,4 +119,27 @@ public class TableReuseTest {
         game.addPlayer(new Player("p2"));
         game.addPlayer(new Player("p3"));
     }
+
+    @DisplayName("video simple 3")
+    @Test
+    void testVideoSimple3() {
+        Game game = new Game();
+        addPlayer(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"JH", "JD", "JS", "JC"});
+        game.place(new String[]{"JH", "JD", "JS", "JC"});
+
+        game.nextTurn();
+        game.draw(new String[]{"QH", "QS", "QC"});
+        game.place(new String[]{"QH", "QS", "QC"});
+
+        game.nextTurn();
+        game.draw(new String[]{"4H", "4C", "4S"}, new String[]{"5H", "6H", "7H"});
+        game.place(new String[]{"4H", "4C", "4S"}, new String[]{"5H", "6H", "7H"});
+
+        game.nextTurn();
+        game.draw(new String[]{"4D", "4H", "8H"});
+        game.insert(new String[]{"4D"}, 2, 0);
+    }
 }

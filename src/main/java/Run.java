@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class Run extends Meld {
     public Run(String[] tiles) {
@@ -11,5 +11,13 @@ public class Run extends Meld {
 
     public Run() {
         this.tiles = new ArrayList<>();
+    }
+
+    @Override
+    public void insert(String[] meld) {
+        for (String tile : meld) {
+            tiles.add(Tile.createTile(tile));
+        }
+        tiles = tiles.stream().sorted((a,b) -> a.number.compareTo(b.number)).collect(Collectors.toList());
     }
 }

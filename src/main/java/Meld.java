@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public abstract class Meld {
-    public ArrayList<Tile> tiles;
+    public List<Tile> tiles;
 
     public static Meld createMeld(String[] tiles) {
         if (tiles[tiles.length - 1].charAt(tiles[tiles.length - 1].length() - 1) == tiles[tiles.length - 2].charAt(tiles[tiles.length - 2].length() - 1)) {
@@ -58,4 +58,6 @@ public abstract class Meld {
         }
         return run;
     }
+
+    public abstract void insert(String[] meld);
 }

@@ -5,6 +5,9 @@ public class Tile {
     public char color;
 
     public static Tile createTile(String NumberColor) {
+        if (NumberColor.length() == 1) {
+            return new Tile(String.valueOf(NumberColor.charAt(0)), '\0');
+        }
         if (NumberColor.charAt(1) == '0') {
             return new Tile("10", NumberColor.charAt(2));
         }
@@ -17,14 +20,14 @@ public class Tile {
     }
 
     public int getNumber() {
-        switch(number){
-            case "J" :
-            case "K" :
-            case "Q" :
+        switch (number) {
+            case "J":
+            case "K":
+            case "Q":
                 return 10;
-            case "A" :
+            case "A":
                 return 1;
-            default :
+            default:
                 return Integer.valueOf(number);
         }
     }
