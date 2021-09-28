@@ -47,8 +47,6 @@ public class Deck {
                 }
             }
         }
-        tiles.add(Tile.createTile("*"));
-        tiles.add(Tile.createTile("*"));
         return tiles;
     }
 }

@@ -5,9 +5,6 @@ public class Tile {
     public char color;
 
     public static Tile createTile(String NumberColor) {
-        if (NumberColor.length() == 1) {
-            return new Tile(NumberColor, '\0');
-        }
         if (NumberColor.charAt(1) == '0') {
             return new Tile("10", NumberColor.charAt(2));
         }

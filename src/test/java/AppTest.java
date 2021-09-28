@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ALL")
 public class AppTest {
-
     //initial 30 points: (each test assumes we are at the start of a new game)
     private void testPlacement(String output, String[]... input) {
         Game game = new Game();
         addPlayer(game);
-        game.players.get(0).place(input);
+        game.nextTurn();
+        game.place(input);
         assertEquals(game.toString(), "Melds:\r\n" + "   Player p1: " +
                 output + "\r\n   Player p2: \r\n" +
                 "   Player p3: ");
@@ -77,10 +77,13 @@ public class AppTest {
     @Test
     void testPlayPlaceAndWin() {
         Game game = new Game();
-        game.addPlayer(new Player("p1"));
-        game.players.get(0).place(new String[]{"2H", "2S", "2C", "2D"}, new String[]{"3C", "4C", "5C", "6C", "7C"}, new String[]{"4D", "5D", "6D", "7D", "8D"});
+        addPlayer(game);
+        game.nextTurn();
+        game.place(new String[]{"2H", "2S", "2C", "2D"}, new String[]{"3C", "4C", "5C", "6C", "7C"}, new String[]{"4D", "5D", "6D", "7D", "8D"});
         assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}");
+                "   Player p1: {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D}\r\n" +
+                "   Player p2: \r\n" +
+                "   Player p3: ");
 
         game.currentPlayerNumber = 0;
         assertGameWin(game);
@@ -209,11 +212,11 @@ public class AppTest {
         Game game = new Game();
         addPlayer(game);
 
-        game.currentPlayerNumber = 0;
+        game.nextTurn();
         game.draw(new String[]{"2C", "2C", "2D", "3H", "3S", "3S", "5H", "6S", "7D", "9H", "10H", "JC", "QS", "KS"});
-        game.currentPlayerNumber = 1;
+        game.nextTurn();
         game.draw(new String[]{"2H", "2S", "2C", "2D", "3C", "4C", "6C", "7C", "4D", "5D", "6D", "7D", "8D"});
-        game.currentPlayerNumber = 2;
+        game.nextTurn();
         game.draw(new String[]{"4H", "6D", "6D", "7S", "7H", "8C", "10H", "JH", "QH", "KH", "10S", "JS", "QS", "KS"});
 
         game.nextTurn();

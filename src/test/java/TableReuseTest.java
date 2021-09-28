@@ -19,7 +19,7 @@ public class TableReuseTest {
         game.draw(new String[]{"JS", "JC"});
         game.draw(9);
 
-        game.placeAndReuse(new String[]{"JS", "JC"}, game.players.get(0).melds.get(0).reuse("JH"));
+        game.placeAndReuse(new String[]{"JS", "JC"}, game.reuse(0, 0, "JH"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JD JS JC}\r\n" +
                 "   Player p2: {QH QS QC} {JS JC JH}\r\n" +
@@ -40,7 +40,7 @@ public class TableReuseTest {
         game.draw(new String[]{"QH", "KH"});
         game.draw(9);
 
-        game.placeAndReuse(new String[]{"QH", "KH"}, game.players.get(0).melds.get(0).reuse("JH"));
+        game.placeAndReuse(new String[]{"QH", "KH"}, game.reuse(0, 0, "JH"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JD JS JC}\r\n" +
                 "   Player p2: {QH QS QC} {QH KH JH}\r\n" +
@@ -57,7 +57,7 @@ public class TableReuseTest {
         game.draw(new String[]{"7S", "7H"});
         game.draw(8);
 
-        game.placeAndReuse(new String[]{"7S", "7H"}, game.players.get(2).melds.get(0).reuse("7D"));
+        game.placeAndReuse(new String[]{"7S", "7H"}, game.reuse(2, 0, "7D"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JS JC} {7S 7H 7D}\r\n" +
                 "   Player p2: {QH QS QC}\r\n" +
@@ -74,7 +74,7 @@ public class TableReuseTest {
         game.draw(new String[]{"KH", "KS"});
         game.draw(8);
 
-        game.placeAndReuse(new String[]{"KH", "KS"}, game.players.get(2).melds.get(0).reuse("KD"));
+        game.placeAndReuse(new String[]{"KH", "KS"}, game.reuse(2, 0, "KD"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JS JC} {KH KS KD}\r\n" +
                 "   Player p2: {QH QS QC}\r\n" +
@@ -91,7 +91,7 @@ public class TableReuseTest {
         game.draw(new String[]{"8D", "9D"});
         game.draw(8);
 
-        game.placeAndReuse(new String[]{"8D", "9D"}, game.reuse(2,0,"10D"));
+        game.placeAndReuse(new String[]{"8D", "9D"}, game.reuse(2, 0, "10D"));
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JS JC} {8D 9D 10D}\r\n" +
                 "   Player p2: {QH QS QC}\r\n" +
@@ -101,15 +101,15 @@ public class TableReuseTest {
     //setup for 1st turn: P1 plays {JH JD JS JC}, P2 {QH QS QC} and P3 {7D 8D 9D 10D JD QD KD}
     private void setUpGame(Game game) {
         addPlayer(game);
-        game.currentPlayerNumber = 0;
+        game.nextTurn();
         game.draw(new String[]{"JH", "JD", "JS", "JC"});
         game.place(new String[]{"JH", "JD", "JS", "JC"});
 
-        game.currentPlayerNumber = 1;
+        game.nextTurn();
         game.draw(new String[]{"QH", "QS", "QC"});
         game.place(new String[]{"QH", "QS", "QC"});
 
-        game.currentPlayerNumber = 2;
+        game.nextTurn();
         game.draw(new String[]{"7D", "8D", "9D", "10D", "JD", "QD", "KD"});
         game.place(new String[]{"7D", "8D", "9D", "10D", "JD", "QD", "KD"});
     }
