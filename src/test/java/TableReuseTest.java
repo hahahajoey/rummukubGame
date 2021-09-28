@@ -171,5 +171,9 @@ public class TableReuseTest {
         game.insertFromMeld(new String[]{game.reuse(1, 0, "JC")}, 0, 0);
         game.insertFromHand(new String[]{"AC"}, 1, 0);
         game.placeAndReuse(new String[]{"QS", "KS"}, game.reuse(0, 0, "JS"));
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH JD JC} {QS KS JS}\r\n" +
+                "   Player p2: {AC KC QC}\r\n" +
+                "   Player p3: {4H 4C 4S} {5H 6H 7H}");
     }
 }
