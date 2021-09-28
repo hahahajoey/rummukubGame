@@ -140,17 +140,36 @@ public class TableReuseTest {
 
         game.nextTurn();
         game.draw(new String[]{"4D", "4H", "8H"});
-        game.insert(new String[]{"4D"}, 2, 0);
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {JH JD JS JC}\r\n" +
-                "   Player p2: {QH QS QC}\r\n" +
-                "   Player p3: {4H 4C 4S 4D} {5H 6H 7H}");
-
-        game.insert(new String[]{"4H","8H"}, 2, 1);
+        game.insertFromHand(new String[]{"4D"}, 2, 0);
+        game.insertFromHand(new String[]{"4H", "8H"}, 2, 1);
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JS JC}\r\n" +
                 "   Player p2: {QH QS QC}\r\n" +
                 "   Player p3: {4H 4C 4S 4D} {4H 5H 6H 7H 8H}");
+    }
 
+    @DisplayName("video simple 1")
+    @Test
+    void testVideoSimple1() {
+        Game game = new Game();
+        addPlayer(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"JH", "JD", "JS"});
+        game.place(new String[]{"JH", "JD", "JS"});
+
+        game.nextTurn();
+        game.draw(new String[]{"JC", "QC", "KC"});
+        game.place(new String[]{"JC", "QC", "KC"});
+
+        game.nextTurn();
+        game.draw(new String[]{"4H", "4C", "4S"}, new String[]{"5H", "6H", "7H"});
+        game.place(new String[]{"4H", "4C", "4S"}, new String[]{"5H", "6H", "7H"});
+
+        game.nextTurn();
+        game.draw(new String[]{"AC", "QS", "KS"});
+        game.insertFromMeld(new String[]{game.reuse(1, 0, "JC")}, 0, 0);
+        game.insertFromHand(new String[]{"AC"}, 1, 0);
+        game.placeAndReuse(new String[]{"QS", "KS"}, game.reuse(0, 0, "JS"));
     }
 }

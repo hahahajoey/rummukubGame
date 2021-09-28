@@ -72,7 +72,11 @@ public class Game {
         currentPlayer().place(Stream.concat(Stream.of(tiles), Stream.of(reuseTile)).toArray(String[]::new));
     }
 
-    public void insert(String[] meld, int playerNumber, int meldNumber) {
+    public void insertFromMeld(String[] meld, int playerNumber, int meldNumber) {
+    }
+
+    public void insertFromHand(String[] meld, int playerNumber, int meldNumber) {
+        currentPlayer().hand.fold(meld);
         players.get(playerNumber).insert(meld, meldNumber);
     }
 
