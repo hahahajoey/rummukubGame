@@ -141,5 +141,16 @@ public class TableReuseTest {
         game.nextTurn();
         game.draw(new String[]{"4D", "4H", "8H"});
         game.insert(new String[]{"4D"}, 2, 0);
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH JD JS JC}\r\n" +
+                "   Player p2: {QH QS QC}\r\n" +
+                "   Player p3: {4H 4C 4S 4D} {5H 6H 7H}");
+
+        game.insert(new String[]{"4H","8H"}, 2, 1);
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH JD JS JC}\r\n" +
+                "   Player p2: {QH QS QC}\r\n" +
+                "   Player p3: {4H 4C 4S 4D} {4H 5H 6H 7H 8H}");
+
     }
 }
