@@ -73,6 +73,7 @@ public class Game {
     }
 
     public void insertFromMeld(String[] meld, int playerNumber, int meldNumber) {
+        players.get(playerNumber).insert(meld, meldNumber);
     }
 
     public void insertFromHand(String[] meld, int playerNumber, int meldNumber) {
