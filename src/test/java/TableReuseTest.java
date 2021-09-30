@@ -204,4 +204,38 @@ public class TableReuseTest {
                 "   Player p2: {QD QS QC}\r\n" +
                 "   Player p3: {7H 8H 9H} {JH QH KH}");
     }
+
+    @DisplayName("video complex  (postulates king - ace - two is VALID)")
+    @Test
+    void testVideoComplex() {
+        Game game = new Game();
+        addPlayer(game);
+
+        game.nextTurn();
+        game.draw(new String[]{"JH", "JS", "JC"}, new String[]{"3H", "4H", "5H"}, new String[]{"AS", "2S", "3S", "4S"});
+        game.place(new String[]{"JH", "JS", "JC"}, new String[]{"3H", "4H", "5H"}, new String[]{"AS", "2S", "3S", "4S"});
+        game.draw(new String[]{"4C", "4S", "5D", "KD"});
+
+        game.nextTurn();
+        game.draw(new String[]{"AD", "2D", "3D", "4D"}, new String[]{"3H", "3D", "3S", "3C"}, new String[]{"3C", "4C", "5C"});
+        game.place(new String[]{"AD", "2D", "3D", "4D"}, new String[]{"3H", "3D", "3S", "3C"}, new String[]{"3C", "4C", "5C"});
+
+        game.nextTurn();
+        game.draw();
+
+        System.out.println(game);
+        game.nextTurn();
+        game.placeAndReuse(new String[]{"4C", "4S"}, game.reuse(1, 0, "4D"));
+        game.insertFromHand(new String[]{"KD"}, 1, 0);
+        game.placeAndReuse(new String[]{"5D"}, game.reuse(0, 1, "5H"), game.reuse(1, 2, "5C"));
+        game.insertFromMeld(new String[]{game.reuse(1, 1, "3S"),
+                game.reuse(1, 2, "3C")}, 0, 1);
+        game.insertFromMeld(new String[]{game.reuse(0, 1, "4H"),
+                game.reuse(0, 2, "4S")}, 1, 2);
+
+        assertEquals(game.toString(), "Melds:\r\n" +
+                "   Player p1: {JH JS JC} {3H 3S 3C} {AS 2S 3S} {4C 4S 4D} {5D 5H 5C}\r\n" +
+                "   Player p2: {AD 2D 3D KD} {3H 3D 3C} {4C 4H 4S}\r\n" +
+                "   Player p3: ");
+    }
 }

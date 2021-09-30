@@ -1,3 +1,4 @@
+import junit.framework.TestCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -5,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ALL")
-public class AppTest {
+public class AppTest extends TestCase {
     //initial 30 points: (each test assumes we are at the start of a new game)
     private void testPlacement(String output, String[]... input) {
         Game game = new Game();
@@ -25,57 +26,57 @@ public class AppTest {
 
     @DisplayName("P1 plays{JH QH KH}")
     @Test
-    void testPlayPlaceRun() {
+    public void testPlayPlaceRun() {
         testPlacement("{JH QH KH}", new String[]{"JH", "QH", "KH"});
     }
 
     @DisplayName("P1 play {QH QC QS}")
     @Test
-    void testPlayPlaceSet() {
+    public void testPlayPlaceSet() {
         testPlacement("{QH QC QS}", new String[]{"QH", "QC", "QS"});
     }
 
     @DisplayName("P1 plays {9H 10H JH QH KH}")
     @Test
-    void testPlayPlaceLongRun() {
+    public void testPlayPlaceLongRun() {
         testPlacement("{9H 10H JH QH KH}", new String[]{"9H", "10H", "JH", "QH", "KH"});
     }
 
     @DisplayName("P1 plays {KH KC KS KD}")
     @Test
-    void testPlayPlaceLongSet() {
+    public void testPlayPlaceLongSet() {
         testPlacement("{KH KC KS KD}", new String[]{"KH", "KC", "KS", "KD"});
     }
 
     @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
     @Test
-    void testPlayPlace2Melds() {
+    public void testPlayPlace2Melds() {
         testPlacement("{2H 3H 4H} {7S 8S 9S}", new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
     }
 
     @DisplayName("P1 plays {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}")
     @Test
-    void testPlayPlace3Melds() {
+    public void testPlayPlace3Melds() {
         testPlacement("{2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}", new String[]{"2H", "2S", "2D"},
                 new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
     }
 
     @DisplayName("P1 plays {8H 8C 8D} {2H 3H 4H}")
     @Test
-    void testPlayPlace2Run() {
+    public void testPlayPlace2Run() {
         testPlacement("{8H 8C 8D} {2H 3H 4H}", new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
     }
 
     @DisplayName("P1 plays {2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}")
     @Test
-    void testPlayPlace4Melds() {
+    public void testPlayPlace4Melds() {
         testPlacement("{2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}", new String[]{"2H", "2D", "2S"}, new String[]{"2C", "3C", "4C"},
                 new String[]{"3H", "3S", "3D"}, new String[]{"5S", "6S", "7S"});
     }
 
     @DisplayName("P1 plays {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D} and wins!")
     @Test
-    void testPlayPlaceAndWin() {
+    public void testPlayPlaceAndWin() {
         Game game = new Game();
         addPlayer(game);
         game.nextTurn();
@@ -114,7 +115,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
     @Test
-    void testRound2P1PlaceRun() {
+    public void testRound2P1PlaceRun() {
         testPlacementAtRound2("Melds:\r\n" +
                 "   Player p1: {JH QH KH} {2C 3C 4C}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
@@ -123,7 +124,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} {8D 9D 10D} from hand")
     @Test
-    void testRound2P1Place2Run() {
+    public void testRound2P1Place2Run() {
         testPlacementAtRound2("Melds:\r\n" +
                 "   Player p1: {JH QH KH} {2C 3C 4C} {8D 9D 10D}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
@@ -132,7 +133,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} from hand")
     @Test
-    void testRound2P1PlaceSet() {
+    public void testRound2P1PlaceSet() {
         testPlacementAtRound2("Melds:\r\n" +
                 "   Player p1: {JH QH KH} {2C 2H 2D}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
@@ -141,7 +142,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
     @Test
-    void testRound2P1Place2Set() {
+    public void testRound2P1Place2Set() {
         testPlacementAtRound2("Melds:\r\n" +
                 "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
@@ -150,7 +151,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 9D 10D} from hand")
     @Test
-    void testRound2P1PlaceRunSet() {
+    public void testRound2P1PlaceRunSet() {
         testPlacementAtRound2("Melds:\r\n" +
                 "   Player p1: {JH QH KH} {2C 2H 2D} {8D 9D 10D}\r\n" +
                 "   Player p2: {JS QS KS}\r\n" +
@@ -159,7 +160,7 @@ public class AppTest {
 
     @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H} from hand")
     @Test
-    void testRound2P1Place4Meld() {
+    public void testRound2P1Place4Meld() {
         testPlacementAtRound2("Melds:\r\n" +
                         "   Player p1: {JH QH KH} {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H}\r\n" +
                         "   Player p2: {JS QS KS}\r\n" +
@@ -169,7 +170,7 @@ public class AppTest {
 
     @DisplayName("a player having or choosing to draw a tile (2 tests, each starting a new game and then chooses to draw")
     @Test
-    void testDrawTile() {
+    public void testDrawTile() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
 
@@ -190,7 +191,7 @@ public class AppTest {
 
     @DisplayName("P1 starts with 2C 2C 2D 3H 3S 3S 5H 6S 7D 9H 10H JC QS KS and has to draw")
     @Test
-    void testDrawTile2() {
+    public void testDrawTile2() {
         Game game = new Game();
         game.addPlayer(new Player("p1"));
 
@@ -208,7 +209,7 @@ public class AppTest {
     //declaring a winner upon a player playing all tiles and reporting correct scores (1 test starting with a new game)
     @DisplayName("scores (visible by all players) are P1:-78, P2: 0 and P3:-38")
     @Test
-    void testScore() {
+    public void testScore() {
         Game game = new Game();
         addPlayer(game);
 
