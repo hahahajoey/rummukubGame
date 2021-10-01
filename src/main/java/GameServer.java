@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -211,10 +212,10 @@ public class GameServer {
 
         private String[] reuse(String[] meldChange) {
             ArrayList<String> output = new ArrayList<>();
-            for (int i = 1; i < Integer.valueOf(meldChange[0]); i += 3) {
+            for (int i = 1; i <= Integer.valueOf(meldChange[0]); i += 3) {
                 output.add(game.reuse(Integer.valueOf(meldChange[i]), Integer.valueOf(meldChange[i + 1]), meldChange[i + 2]));
             }
-            return (String[]) output.toArray();
+            return output.toArray(new String[0]);
         }
     }
 }
