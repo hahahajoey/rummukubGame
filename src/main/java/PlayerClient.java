@@ -77,7 +77,7 @@ public class PlayerClient {
             input += scanner;
             number++;
             System.out.println("Any more reuse tile?");
-            if (scanner.next() == "Y") {
+            if (scanner.nextLine() == "Y") {
                 break;
             }
         }
