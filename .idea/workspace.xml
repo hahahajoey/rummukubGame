@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameServer$Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameServer$Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameServer.class" afterDir="false" />
-    </list>
+    <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/rummukubGame-main" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/rummukubGame-main/rummukubGame-main" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -142,7 +137,7 @@
       <workItem from="1633061438822" duration="30000" />
       <workItem from="1633061688947" duration="18000" />
       <workItem from="1633061797752" duration="50000" />
-      <workItem from="1633062612421" duration="1090000" />
+      <workItem from="1633062612421" duration="1314000" />
     </task>
     <servers />
   </component>

@@ -182,24 +182,25 @@ public class GameServer {
         }
 
         public boolean receiveRound() {
-            if (receiveString().equals("draw")) {
+            String input = receiveString();
+            if (input.equals("draw")) {
                 game.draw();
                 return false;
-            } else if (receiveString().equals("place")) {
+            } else if (input.equals("place")) {
                 String[] tiles = receiveString().split(" ");
                 game.place(tiles);
                 return true;
-            } else if (receiveString().equals("place and reuse")) {
+            } else if (input.equals("place and reuse")) {
                 String[] tiles = receiveString().split(" ");
                 String[] reuseSet = reuse(receiveString().split(" "));
                 game.placeAndReuse(tiles, reuseSet);
                 return true;
-            } else if (receiveString().equals("insert from hand")) {
+            } else if (input.equals("insert from hand")) {
                 String[] tiles = receiveString().split(" ");
                 String[] insertTile = receiveString().split(" ");
                 game.insertFromHand(tiles, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
                 return true;
-            } else if (receiveString().equals("insert from meld")) {
+            } else if (input.equals("insert from meld")) {
                 String[] reuseSet = reuse(receiveString().split(" "));
                 String[] insertTile = receiveString().split(" ");
                 game.insertFromHand(reuseSet, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
