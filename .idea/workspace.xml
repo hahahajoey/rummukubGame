@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PlayerClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerSequenceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Deck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PlayerSequenceTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,11 +67,25 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest">
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.PlayerClient">
+    <configuration name="GameServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameServer" />
+      <module name="rummukubGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PlayerClient" />
+      <module name="rummukubGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerSequenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="MAIN_CLASS_NAME" value="PlayerSequenceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -79,26 +96,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TableReuseTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TableReuseTest.testReuseMakeSetFromSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rummukubGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TableReuseTest" />
-      <option name="METHOD_NAME" value="testReuseMakeSetFromSet" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TableReuseTest.testVideoSimple2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rummukubGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TableReuseTest" />
-      <option name="METHOD_NAME" value="testVideoSimple2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,11 +111,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="Application.PlayerClient" />
+        <item itemvalue="Application.GameServer" />
         <item itemvalue="JUnit.TestSuite" />
         <item itemvalue="JUnit.TableReuseTest" />
-        <item itemvalue="JUnit.TableReuseTest.testVideoSimple2" />
-        <item itemvalue="JUnit.TableReuseTest.testReuseMakeSetFromSet" />
+        <item itemvalue="JUnit.PlayerSequenceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +140,10 @@
       <workItem from="1632773468183" duration="1211000" />
       <workItem from="1632793485869" duration="2038000" />
       <workItem from="1632843671813" duration="22433000" />
-      <workItem from="1632948994552" duration="11913000" />
+      <workItem from="1632948994552" duration="12618000" />
+      <workItem from="1633015324373" duration="12472000" />
+      <workItem from="1633033138383" duration="22994000" />
+      <workItem from="1633057535948" duration="3527000" />
     </task>
     <servers />
   </component>
@@ -168,5 +168,8 @@
         <PinnedItemInfo parentTag="Game" memberName="currentPlayer" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/rummukubGame$PlayerClient.ic" NAME="PlayerClient Coverage Results" MODIFIED="1633032902528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

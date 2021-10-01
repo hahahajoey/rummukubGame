@@ -37,6 +37,13 @@ public class Game {
         }
     }
 
+    public void start() {
+        for (Player player : players) {
+            nextTurn();
+            draw(14);
+        }
+    }
+
     public Tile draw() {
         return currentPlayer().draw(deck.draw());
     }
@@ -85,7 +92,7 @@ public class Game {
         return players.get(playerNumber).reuse(meldNumber,tile);
     }
 
-    private Player currentPlayer() {
+    public Player currentPlayer() {
         return players.get(currentPlayerNumber);
     }
 

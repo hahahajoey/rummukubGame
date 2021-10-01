@@ -1,14 +1,15 @@
+import junit.framework.TestCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TableReuseTest {
+public class TableReuseTest extends TestCase {
 
     // after turn 1, P2 has JS JC among its 11 remaining cards, turn 2: P1 draws then P2 reuses JH from table to form set {JS JC JH} on table
     @DisplayName("completing a partial set from a hand by reusing from a set of 4 of the table")
     @Test
-    void testReuseMakeSetFromSet() {
+    public void testReuseMakeSetFromSet() {
         Game game = new Game();
         setUpGame(game);
 
@@ -29,7 +30,7 @@ public class TableReuseTest {
     // after turn 1, P2 has QH KH among its 11 remaining cards, turn 2: P1 draws then P2 reuses JH from table to form run {JH QH KH} on table
     @DisplayName("completing a partial run from a hand by reusing from a set of 4 of the table")
     @Test
-    void testReuseMakeRunFromSet() {
+    public void testReuseMakeRunFromSet() {
         Game game = new Game();
         setUpGame(game);
 
@@ -49,7 +50,7 @@ public class TableReuseTest {
 
     @DisplayName("completing a partial set from a hand by reusing from a run of the table")
     @Test
-    void testReuseMakeSetFromRun() {
+    public void testReuseMakeSetFromRun() {
         Game game = new Game();
         setUpGame(game);
 
@@ -66,7 +67,7 @@ public class TableReuseTest {
 
     @DisplayName("completing a partial set from a hand by reusing from a run of the table 2")
     @Test
-    void testReuseMakeSetFromRun2() {
+    public void testReuseMakeSetFromRun2() {
         Game game = new Game();
         setUpGame(game);
 
@@ -83,7 +84,7 @@ public class TableReuseTest {
 
     @DisplayName("completing a partial run from a hand by reusing from run of the table")
     @Test
-    void testReuseMakeRunFromRun() {
+    public void testReuseMakeRunFromRun() {
         Game game = new Game();
         setUpGame(game);
 
@@ -122,7 +123,7 @@ public class TableReuseTest {
 
     @DisplayName("video simple 3")
     @Test
-    void testVideoSimple3() {
+    public void testVideoSimple3() {
         Game game = new Game();
         addPlayer(game);
 
@@ -150,7 +151,7 @@ public class TableReuseTest {
 
     @DisplayName("video simple 1")
     @Test
-    void testVideoSimple1() {
+    public void testVideoSimple1() {
         Game game = new Game();
         addPlayer(game);
 
@@ -179,7 +180,7 @@ public class TableReuseTest {
 
     @DisplayName("video simple 2")
     @Test
-    void testVideoSimple2() {
+    public void testVideoSimple2() {
         Game game = new Game();
         addPlayer(game);
 
@@ -207,7 +208,7 @@ public class TableReuseTest {
 
     @DisplayName("video complex  (postulates king - ace - two is VALID)")
     @Test
-    void testVideoComplex() {
+    public void testVideoComplex() {
         Game game = new Game();
         addPlayer(game);
 
