@@ -49,7 +49,7 @@ public class PlayerClient {
             System.out.println("Place type in the tiles that you want to place :");
             clientConnection.sendStr(scanner.nextLine());
             return true;
-        } else if (behaviour.equals("place from hand")) {
+        } else if (behaviour.equals("place and reuse")) {
             System.out.println("Place type in the tiles that you want to place from hand :");
             clientConnection.sendStr(scanner.nextLine());
             sendSelectedTile();
