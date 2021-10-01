@@ -74,7 +74,7 @@ public class PlayerClient {
         int number = 0;
         while (true) {
             System.out.println("Place type in which player, meld, tile that you want to reuse");
-            input += scanner;
+            input += scanner.nextLine();
             number++;
             System.out.println("Any more reuse tile?");
             if (scanner.nextLine() == "Y") {
