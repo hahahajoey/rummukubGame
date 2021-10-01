@@ -1,5 +1,3 @@
-import org.junit.jupiter.params.provider.Arguments;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -184,25 +182,28 @@ public class GameServer {
         }
 
         public boolean receiveRound() {
-            System.out.println(receiveString());
             if (receiveString().equals("draw")) {
                 game.draw();
                 return false;
             } else if (receiveString().equals("place")) {
                 String[] tiles = receiveString().split(" ");
                 game.place(tiles);
+                return true;
             } else if (receiveString().equals("place and reuse")) {
                 String[] tiles = receiveString().split(" ");
                 String[] reuseSet = reuse(receiveString().split(" "));
                 game.placeAndReuse(tiles, reuseSet);
+                return true;
             } else if (receiveString().equals("insert from hand")) {
                 String[] tiles = receiveString().split(" ");
                 String[] insertTile = receiveString().split(" ");
                 game.insertFromHand(tiles, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
+                return true;
             } else if (receiveString().equals("insert from meld")) {
                 String[] reuseSet = reuse(receiveString().split(" "));
                 String[] insertTile = receiveString().split(" ");
                 game.insertFromHand(reuseSet, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
+                return true;
             }
             return false;
         }
