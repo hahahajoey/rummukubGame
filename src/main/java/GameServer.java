@@ -1,10 +1,8 @@
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class GameServer {
     ServerSocket serverSocket;
@@ -17,11 +15,7 @@ public class GameServer {
         GameServer gameServer = new GameServer();
         gameServer.acceptConnections();
         gameServer.gameLoop();
-        gameServer.gameEnd();
-    }
-
-    private void gameEnd() {
-        sendScore();
+        gameServer.sendScore();
     }
 
     private void gameLoop() {
@@ -30,7 +24,7 @@ public class GameServer {
             game.nextTurn();
             sendAllStr("Player " + game.currentPlayer().name + "’s turn");
             sendAllStr(game.toString());
-            sendPlayerHand();
+            sendAllPlayerHand();
             playerRound(game.currentPlayerNumber);
             sendWin();
             game.checkingWin();
@@ -50,16 +44,14 @@ public class GameServer {
         }
     }
 
-    private void sendPlayerHand() {
+    private void sendAllPlayerHand() {
         for (int i = 0; i < numPlayers; i++) {
-            playerServers[i].sendStr(game.players.get(i).hand.toString());
+            sendPlayerHand(i);
         }
     }
 
-    private void playerRound(int playerNumber) {
-        sendSetRoundPlay(playerNumber);
-        while (playerServers[playerNumber].receiveRound()) {
-        }
+    private void sendPlayerHand(int playerNumber) {
+        playerServers[playerNumber].sendStr(game.players.get(playerNumber).hand.toString());
     }
 
     private void sendSetRoundPlay(int playerNumber) {
@@ -74,7 +66,19 @@ public class GameServer {
 
     private void sendAllStr(String string) {
         for (int i = 0; i < numPlayers; i++) {
-            playerServers[i].sendStr(string);
+            sendPlayerStr(i, string);
+        }
+    }
+
+    private void sendPlayerStr(int playerNumber, String String) {
+        playerServers[playerNumber].sendStr(String);
+    }
+
+    private void playerRound(int playerNumber) {
+        sendSetRoundPlay(playerNumber);
+        while (playerServers[playerNumber].receiveRound()) {
+            sendPlayerStr(game.currentPlayerNumber, game.toString());
+            sendPlayerHand(playerNumber);
         }
     }
 
@@ -191,31 +195,22 @@ public class GameServer {
                 String[] tiles = receiveString().split(" ");
                 game.place(tiles);
                 return true;
-            } else if (input.equals("place and reuse")) {
-                String[] tiles = receiveString().split(" ");
-                String[] reuseSet = reuse(receiveString().split(" "));
-                game.placeAndReuse(tiles, reuseSet);
+            } else if (input.equals("reuse")) {
+                reuse(receiveString().split(" "));
                 return true;
-            } else if (input.equals("insert from hand")) {
+            } else if (input.equals("place in to melds")) {
                 String[] tiles = receiveString().split(" ");
                 String[] insertTile = receiveString().split(" ");
-                game.insertFromHand(tiles, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
-                return true;
-            } else if (input.equals("insert from meld")) {
-                String[] reuseSet = reuse(receiveString().split(" "));
-                String[] insertTile = receiveString().split(" ");
-                game.insertFromHand(reuseSet, Integer.valueOf(insertTile[0]), Integer.valueOf(insertTile[1]));
+                game.insertFromHand(tiles, Integer.parseInt(insertTile[0]), Integer.parseInt(insertTile[1]));
                 return true;
             }
             return false;
         }
 
-        private String[] reuse(String[] meldChange) {
-            ArrayList<String> output = new ArrayList<>();
-            for (int i = 1; i <= Integer.valueOf(meldChange[0]); i += 3) {
-                output.add(game.reuse(Integer.valueOf(meldChange[i]), Integer.valueOf(meldChange[i + 1]), meldChange[i + 2]));
+        private void reuse(String[] meldChange) {
+            for (int i = 1; i <= Integer.parseInt(meldChange[0]); i += 3) {
+                game.reuse(Integer.parseInt(meldChange[i]) + 1, Integer.parseInt(meldChange[i + 1]) + 1, meldChange[i + 2]);
             }
-            return output.toArray(new String[0]);
         }
     }
 }

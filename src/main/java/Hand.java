@@ -21,9 +21,13 @@ public class Hand {
         return tile;
     }
 
+    public void add(String tile) {
+        this.tiles.add(Tile.createTile(tile));
+    }
+
     public void add(String[] tiles) {
         for (String tile : tiles) {
-            this.tiles.add(Tile.createTile(tile));
+            add(tile);
             tilesNumber++;
         }
     }

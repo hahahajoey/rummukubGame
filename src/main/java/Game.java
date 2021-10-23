@@ -74,22 +74,13 @@ public class Game {
         }
     }
 
-    public void placeAndReuse(String[] tiles, String... reuseTile) {
-        currentPlayer().draw(reuseTile);
-        currentPlayer().place(Stream.concat(Stream.of(tiles), Stream.of(reuseTile)).toArray(String[]::new));
-    }
-
-    public void insertFromMeld(String[] meld, int playerNumber, int meldNumber) {
-        players.get(playerNumber).insert(meld, meldNumber);
-    }
-
     public void insertFromHand(String[] meld, int playerNumber, int meldNumber) {
         currentPlayer().hand.fold(meld);
         players.get(playerNumber).insert(meld, meldNumber);
     }
 
-    public String reuse(int playerNumber, int meldNumber, String tile) {
-        return players.get(playerNumber).reuse(meldNumber,tile);
+    public void reuse(int playerNumber, int meldNumber, String tile) {
+        currentPlayer().hand.add(players.get(playerNumber).reuse(meldNumber,tile));
     }
 
     public Player currentPlayer() {

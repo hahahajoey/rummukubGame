@@ -23,6 +23,7 @@ public class PlayerClient {
     }
 
     private void endScore() {
+        System.out.println(clientConnection.receiveStr());
     }
 
     private void startGame() {
@@ -42,28 +43,27 @@ public class PlayerClient {
 
     private boolean playRound() {
         System.out.println("Which move do you want to do: draw, place," +
-                " place and reuse, insert from hand, insert from meld, end");
+                " reuse, place in to melds, end");
         String behaviour = scanner.nextLine();
         clientConnection.sendStr(behaviour);
         if (behaviour.equals("place")) {
             System.out.println("Place type in the tiles that you want to place :");
             clientConnection.sendStr(scanner.nextLine());
+            System.out.println(clientConnection.receiveStr());
+            System.out.println(clientConnection.receiveStr());
             return true;
-        } else if (behaviour.equals("place and reuse")) {
-            System.out.println("Place type in the tiles that you want to place from hand :");
-            clientConnection.sendStr(scanner.nextLine());
+        } else if (behaviour.equals("reuse")) {
             sendSelectedTile();
+            System.out.println(clientConnection.receiveStr());
+            System.out.println(clientConnection.receiveStr());
             return true;
-        } else if (behaviour.equals("insert from hand")) {
+        } else if (behaviour.equals("place in to melds")) {
             System.out.println("Place type in the tiles that you want to place from hand :");
             clientConnection.sendStr(scanner.nextLine());
             System.out.println("Place type in which player, meld, tile that you want to insert");
             clientConnection.sendStr(scanner.nextLine());
-            return true;
-        } else if (behaviour.equals("insert from meld")) {
-            sendSelectedTile();
-            System.out.println("Place type in which player, meld, tile that you want to insert");
-            clientConnection.sendStr(scanner.nextLine());
+            System.out.println(clientConnection.receiveStr());
+            System.out.println(clientConnection.receiveStr());
             return true;
         }
         return false;
