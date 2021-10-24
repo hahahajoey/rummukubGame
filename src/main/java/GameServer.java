@@ -209,7 +209,7 @@ public class GameServer {
 
         private void reuse(String[] meldChange) {
             for (int i = 1; i <= Integer.parseInt(meldChange[0]); i += 3) {
-                game.reuse(Integer.parseInt(meldChange[i]) + 1, Integer.parseInt(meldChange[i + 1]) + 1, meldChange[i + 2]);
+                game.reuse(Integer.parseInt(meldChange[i]), Integer.parseInt(meldChange[i + 1]), meldChange[i + 2]);
             }
         }
     }

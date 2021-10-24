@@ -76,11 +76,11 @@ public class Game {
 
     public void insertFromHand(String[] meld, int playerNumber, int meldNumber) {
         currentPlayer().hand.fold(meld);
-        players.get(playerNumber).insert(meld, meldNumber);
+        players.get(playerNumber - 1).insert(meld, meldNumber - 1);
     }
 
     public void reuse(int playerNumber, int meldNumber, String tile) {
-        currentPlayer().hand.add(players.get(playerNumber).reuse(meldNumber,tile));
+        currentPlayer().hand.add(players.get(playerNumber - 1).reuse(meldNumber - 1, tile));
     }
 
     public Player currentPlayer() {

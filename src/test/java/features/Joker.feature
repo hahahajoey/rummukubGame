@@ -23,10 +23,11 @@ Test every functionality for joker
     And Player 1 has "1G, 2G, 3G, *" melds
     When Player 1 reuse "*" from Player 1 meld 1
     And Player 1 place "7G 7O *"
-    Then Player 1 's melds has "1G, 2G, 3G", "7G, 7O, *"
+    Then Player 1 's melds has "1G, 2G, 3G"
+    And Player 1 's melds has "7G, 7O, *"
 
   @place_joker_into_melds
-  Scenario: Player could reuse joker from melds
+  Scenario: Player could place joker into melds
     Given Game is on
     And Player 1 has "*" on hand
     And Player 1 has "1G, 2G, 3G" melds

@@ -27,7 +27,7 @@ public class StepDefGame {
 
     @When("Player {int} draw {string}")
     public void playerDraw(int playerNumber, String tiles) {
-        game.currentPlayerNumber = playerNumber;
+        game.currentPlayerNumber = playerNumber - 1;
         game.draw(tiles.split(", "));
     }
 
@@ -38,23 +38,44 @@ public class StepDefGame {
 
     @When("Player {int} place {string}")
     public void playerPlace(int playerNumber, String tiles) {
-        game.currentPlayerNumber = playerNumber;
+        game.currentPlayerNumber = playerNumber - 1;
         game.place(tiles.split(" "));
     }
 
     @Then("Player {int} 's melds has {string}")
     public void playerSMeldsHas(int playerNumber, String meld) {
-        assertTrue(game.players.get(playerNumber).hasMeld(meld.split(" ")));
+        assertTrue(game.players.get(playerNumber - 1).hasMeld(meld.split(" ")));
     }
 
     @Then("Player {int} 's hand has {string}")
-    public void playerSHandHas(int playerNumber, String tiles) {
-        assertTrue(game.players.get(playerNumber).hasTilesInHand(tiles.split(", ")));
+    public void playerSHandHas(int playerNumber, String tile) {
+        assertTrue(game.players.get(playerNumber - 1).hasTilesInHand(tile.split(", ")));
     }
 
     @Given("Player {int} has {string} on hand")
     public void playerHasOnHand(int playerNumber, String tiles) {
-        game.currentPlayerNumber = playerNumber;
+        game.currentPlayerNumber = playerNumber - 1;
         game.draw(tiles.split(" "));
+    }
+
+    @Given("Player {int} has {string} melds")
+    public void playerHasMelds(int playerNumber, String meld) {
+        game.currentPlayerNumber = playerNumber - 1;
+        game.draw(meld.split(" "));
+        game.place(meld.split(" "));
+    }
+
+    @When("Player {int} reuse {string} from Player {int} meld {int}")
+    public void playerReuseFromPlayerMeld(int playerNumber, String tiles, int reusePlayerNumber, int meldNumber) {
+        game.currentPlayerNumber = playerNumber - 1;
+        for (String tile : tiles.split(" ")) {
+            game.reuse(reusePlayerNumber, meldNumber, tile);
+        }
+    }
+
+    @When("Player {int} place {string} into Player {int} meld {int}")
+    public void playerPlaceIntoPlayerMeld(int playerNumber, String tiles, int inputPlayerNumber, int meldNumber) {
+        game.currentPlayerNumber = playerNumber - 1;
+        game.insertFromHand(tiles.split(" "), inputPlayerNumber, meldNumber);
     }
 }
