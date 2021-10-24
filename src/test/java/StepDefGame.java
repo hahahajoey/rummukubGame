@@ -31,13 +31,30 @@ public class StepDefGame {
         game.draw(tiles.split(", "));
     }
 
-    @Then("Player {int} has {string} on hand")
-    public void playerHasOnHand(int playerNumber, String tiles) {
+    @Then("Deck has remain {int}")
+    public void deckHasRemain(int tileNumber) {
+        assertNotEquals(tileNumber, game.deckRemain());
+    }
+
+    @When("Player {int} place {string}")
+    public void playerPlace(int playerNumber, String tiles) {
+        game.currentPlayerNumber = playerNumber;
+        game.place(tiles.split(" "));
+    }
+
+    @Then("Player {int} 's melds has {string}")
+    public void playerSMeldsHas(int playerNumber, String meld) {
+        assertTrue(game.players.get(playerNumber).hasMeld(meld.split(" ")));
+    }
+
+    @Then("Player {int} 's hand has {string}")
+    public void playerSHandHas(int playerNumber, String tiles) {
         assertTrue(game.players.get(playerNumber).hasTilesInHand(tiles.split(", ")));
     }
 
-    @And("Deck has remain {int}")
-    public void deckHasRemain(int tileNumber) {
-        assertNotEquals(tileNumber,game.deckRemain());
+    @Given("Player {int} has {string} on hand")
+    public void playerHasOnHand(int playerNumber, String tiles) {
+        game.currentPlayerNumber = playerNumber;
+        game.draw(tiles.split(" "));
     }
 }

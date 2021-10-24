@@ -1,6 +1,7 @@
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public abstract class Meld {
@@ -24,6 +25,21 @@ public abstract class Meld {
             location++;
         }
         return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (tiles.size() != ((Meld) o).tiles.size()) {
+            return false;
+        }
+        for (int i = 0; i < tiles.size(); i++) {
+            if (!tiles.get(i).equals(((Meld) o).tiles.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

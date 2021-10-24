@@ -65,4 +65,13 @@ public class Player {
         }
         return true;
     }
+
+    public boolean hasMeld(String[] compereMeld) {
+        for (Meld meld : melds) {
+            if (meld.equals(Meld.createMeld(compereMeld))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
