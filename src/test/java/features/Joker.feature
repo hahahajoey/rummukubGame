@@ -6,7 +6,7 @@ Test every functionality for joker
   Scenario: Player could draw joker from deck
     Given Game is on
     When Player 1 draw "*"
-    Then Player 1 has "*"
+    Then Player 1 has "*" on hand
     And Deck has remain 105
 
   @place_joker

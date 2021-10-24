@@ -56,4 +56,13 @@ public class Player {
     public String toString() {
         return "Player " + name + ": " + melds.stream().map(Meld::toString).collect(Collectors.joining(" "));
     }
+
+    public boolean hasTilesInHand(String[] tiles) {
+        for (String tile : tiles) {
+            if (!hand.exist(tile)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

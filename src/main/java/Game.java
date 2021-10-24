@@ -95,4 +95,8 @@ public class Game {
     public String scoreBoard() {
         return "Score: " + players.stream().map(player -> player.name + ":" + player.score).collect(Collectors.joining(", "));
     }
+
+    public int deckRemain() {
+        return deck.tilesNumber();
+    }
 }

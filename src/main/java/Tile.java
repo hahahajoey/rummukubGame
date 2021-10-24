@@ -1,3 +1,4 @@
+import javax.print.DocFlavor;
 import java.util.Objects;
 
 public class Tile {

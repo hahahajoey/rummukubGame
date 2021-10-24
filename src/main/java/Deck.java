@@ -49,4 +49,8 @@ public class Deck {
         }
         return tiles;
     }
+
+    public int tilesNumber() {
+        return tiles.size();
+    }
 }

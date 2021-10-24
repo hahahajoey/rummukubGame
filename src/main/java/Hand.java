@@ -57,4 +57,13 @@ public class Hand {
     public int sum() {
         return tiles.stream().mapToInt(Tile::getNumber).sum();
     }
+
+    public boolean exist(String compereTile) {
+        for (Tile tile : tiles) {
+            if (tile.equals(Tile.createTile(compereTile))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
