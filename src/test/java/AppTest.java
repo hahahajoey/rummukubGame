@@ -7,72 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ALL")
 public class AppTest extends TestCase {
-    //initial 30 points: (each test assumes we are at the start of a new game)
-    private void testPlacement(String output, String[]... input) {
-        Game game = new Game();
-        addPlayer(game);
-        game.nextTurn();
-        game.place(input);
-        assertEquals(game.toString(), "Melds:\r\n" + "   Player p1: " +
-                output + "\r\n   Player p2: \r\n" +
-                "   Player p3: ");
-    }
-
-    private void addPlayer(Game game) {
-        game.addPlayer(new Player("p1"));
-        game.addPlayer(new Player("p2"));
-        game.addPlayer(new Player("p3"));
-    }
-
-    @DisplayName("P1 plays{JH QH KH}")
-    @Test
-    public void testPlayPlaceRun() {
-        testPlacement("{JH QH KH}", new String[]{"JH", "QH", "KH"});
-    }
-
-    @DisplayName("P1 play {QH QC QS}")
-    @Test
-    public void testPlayPlaceSet() {
-        testPlacement("{QH QC QS}", new String[]{"QH", "QC", "QS"});
-    }
-
-    @DisplayName("P1 plays {9H 10H JH QH KH}")
-    @Test
-    public void testPlayPlaceLongRun() {
-        testPlacement("{9H 10H JH QH KH}", new String[]{"9H", "10H", "JH", "QH", "KH"});
-    }
-
-    @DisplayName("P1 plays {KH KC KS KD}")
-    @Test
-    public void testPlayPlaceLongSet() {
-        testPlacement("{KH KC KS KD}", new String[]{"KH", "KC", "KS", "KD"});
-    }
-
-    @DisplayName("P1 plays {2H 3H 4H} {7S 8S 9S}")
-    @Test
-    public void testPlayPlace2Melds() {
-        testPlacement("{2H 3H 4H} {7S 8S 9S}", new String[]{"2H", "3H", "4H"}, new String[]{"7S", "8S", "9S"});
-    }
-
-    @DisplayName("P1 plays {2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}")
-    @Test
-    public void testPlayPlace3Melds() {
-        testPlacement("{2H 2S 2D} {4C 4D 4S 4H} {5D 5S 5H}", new String[]{"2H", "2S", "2D"},
-                new String[]{"4C", "4D", "4S", "4H"}, new String[]{"5D", "5S", "5H"});
-    }
-
-    @DisplayName("P1 plays {8H 8C 8D} {2H 3H 4H}")
-    @Test
-    public void testPlayPlace2Run() {
-        testPlacement("{8H 8C 8D} {2H 3H 4H}", new String[]{"8H", "8C", "8D"}, new String[]{"2H", "3H", "4H"});
-    }
-
-    @DisplayName("P1 plays {2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}")
-    @Test
-    public void testPlayPlace4Melds() {
-        testPlacement("{2H 2D 2S} {2C 3C 4C} {3H 3S 3D} {5S 6S 7S}", new String[]{"2H", "2D", "2S"}, new String[]{"2C", "3C", "4C"},
-                new String[]{"3H", "3S", "3D"}, new String[]{"5S", "6S", "7S"});
-    }
 
     @DisplayName("P1 plays {2H 2S 2C 2D} {3C 4C 5C 6C 7C} {4D 5D 6D 7D 8D} and wins!")
     @Test
@@ -88,105 +22,6 @@ public class AppTest extends TestCase {
 
         game.currentPlayerNumber = 0;
         assertGameWin(game);
-    }
-
-    //playing melds out of your hand after initial 30 (row 62 is the setup for each of the tests of row 63 to 68)
-
-    private void testPlacementAtRound2(String output, String[]... input) {
-        Game game = new Game();
-        gameSetUpForFirstRound(game);
-
-        game.nextTurn();
-        game.draw(input);
-        game.place(input);
-
-        assertEquals(game.toString(), output);
-    }
-
-    //setup for 1st turn P1 plays {JH QH KH}, P2 {JS QS KS} and P3 {JD QD KD}
-    private void gameSetUpForFirstRound(Game game) {
-        addPlayer(game);
-
-        game.players.get(0).place(new String[]{"JH", "QH", "KH"});
-        game.players.get(1).place(new String[]{"JS", "QS", "KS"});
-        game.players.get(2).place(new String[]{"JD", "QD", "KD"});
-        game.currentPlayerNumber = 2;
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} from hand")
-    @Test
-    public void testRound2P1PlaceRun() {
-        testPlacementAtRound2("Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 3C 4C}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}", new String[]{"2C", "3C", "4C"});
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 3C 4C} {8D 9D 10D} from hand")
-    @Test
-    public void testRound2P1Place2Run() {
-        testPlacementAtRound2("Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 3C 4C} {8D 9D 10D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}", new String[]{"2C", "3C", "4C"}, new String[]{"8D", "9D", "10D"});
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} from hand")
-    @Test
-    public void testRound2P1PlaceSet() {
-        testPlacementAtRound2("Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"});
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 8H 8S 8C} from hand")
-    @Test
-    public void testRound2P1Place2Set() {
-        testPlacementAtRound2("Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 8H 8S 8C}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"8D", "8H", "8S", "8C"});
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {8D 9D 10D} from hand")
-    @Test
-    public void testRound2P1PlaceRunSet() {
-        testPlacementAtRound2("Melds:\r\n" +
-                "   Player p1: {JH QH KH} {2C 2H 2D} {8D 9D 10D}\r\n" +
-                "   Player p2: {JS QS KS}\r\n" +
-                "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"8D", "9D", "10D"});
-    }
-
-    @DisplayName("start of turn 2: P1 then plays {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H} from hand")
-    @Test
-    public void testRound2P1Place4Meld() {
-        testPlacementAtRound2("Melds:\r\n" +
-                        "   Player p1: {JH QH KH} {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H}\r\n" +
-                        "   Player p2: {JS QS KS}\r\n" +
-                        "   Player p3: {JD QD KD}", new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"},
-                new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
-    }
-
-    @DisplayName("a player having or choosing to draw a tile (2 tests, each starting a new game and then chooses to draw")
-    @Test
-    public void testDrawTile() {
-        Game game = new Game();
-        game.addPlayer(new Player("p1"));
-
-        game.players.get(0).place(new String[]{"2C", "2H", "2D"}, new String[]{"3C", "3H", "3D"},
-                new String[]{"8D", "9D", "10D"}, new String[]{"8H", "9H", "10H"});
-        game.players.get(0).draw(new String[]{"QC", "7H"});
-        game.currentPlayerNumber = 2;
-
-        game.nextTurn();
-
-        assertEquals(game.toString(), "Melds:\r\n" +
-                "   Player p1: {2C 2H 2D} {3C 3H 3D} {8D 9D 10D} {8H 9H 10H}");
-
-        assertEquals(game.players.get(0).hand.toString(), "Hand :{QC 7H}");
-        game.draw();
-        assertEquals(game.players.get(0).hand.tilesNumber, 3);
     }
 
     @DisplayName("P1 starts with 2C 2C 2D 3H 3S 3S 5H 6S 7D 9H 10H JC QS KS and has to draw")
@@ -241,6 +76,12 @@ public class AppTest extends TestCase {
         assertGameWin(game);
 
         assertEquals(game.scoreBoard(), "Score: p1:-78, p2:0, p3:-38");
+    }
+
+    private void addPlayer(Game game) {
+        game.addPlayer(new Player("p1"));
+        game.addPlayer(new Player("p2"));
+        game.addPlayer(new Player("p3"));
     }
 
     private void assertGameWin(Game game) {
