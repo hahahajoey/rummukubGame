@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Player {
+public class Player implements Serializable{
     public ArrayList<Meld> melds;
     public Hand hand;
     public int score;
@@ -73,5 +74,14 @@ public class Player {
             }
         }
         return false;
+    }
+
+    public boolean validation() {
+        for (Meld meld : melds) {
+            if (!meld.validation()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

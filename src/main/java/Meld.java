@@ -1,15 +1,29 @@
 
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public abstract class Meld {
+public abstract class Meld implements Serializable {
     public List<Tile> tiles;
 
     public static Meld createMeld(String[] tiles) {
-        if (tiles[tiles.length - 1].charAt(tiles[tiles.length - 1].length() - 1) == tiles[tiles.length - 2].charAt(tiles[tiles.length - 2].length() - 1)) {
-            return new Run(tiles);
+        Iterator<String> iterator = Arrays.stream(tiles).iterator();
+        char color = '\0';
+        while (iterator.hasNext()) {
+            String tile = iterator.next();
+            if (tile.length() < 2) {
+                continue;
+            }
+            if (color == '\0') {
+                color = tile.charAt(tile.length() - 1);
+            } else if (color == tile.charAt(tile.length() - 1)) {
+                return new Run(tiles);
+            } else {
+                return new Set(tiles);
+            }
         }
         return new Set(tiles);
     }
@@ -76,4 +90,6 @@ public abstract class Meld {
     }
 
     public abstract void insert(String[] meld);
+
+    public abstract boolean validation();
 }

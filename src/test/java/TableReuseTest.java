@@ -141,8 +141,8 @@ public class TableReuseTest extends TestCase {
 
         game.nextTurn();
         game.draw(new String[]{"4D", "4H", "8H"});
-        game.insertFromHand(new String[]{"4D"}, 2, 0);
-        game.insertFromHand(new String[]{"4H", "8H"}, 2, 1);
+        game.insertFromHand(new String[]{"4D"}, 3, 1);
+        game.insertFromHand(new String[]{"4H", "8H"}, 3, 2);
         assertEquals(game.toString(), "Melds:\r\n" +
                 "   Player p1: {JH JD JS JC}\r\n" +
                 "   Player p2: {QH QS QC}\r\n" +

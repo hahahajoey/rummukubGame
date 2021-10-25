@@ -1,12 +1,13 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Game {
     public ArrayList<Player> players;
     public int currentPlayerNumber;
     public boolean win;
     public Deck deck;
+    private ArrayList<ByteArrayOutputStream> playerRecord;
     int playerNumber;
 
     public Game() {
@@ -22,10 +23,52 @@ public class Game {
     }
 
     public void nextTurn() {
+        if (!validation()) {
+            load();
+            draw(3);
+        }
         currentPlayerNumber++;
         if (currentPlayerNumber > playerNumber - 1) {
             currentPlayerNumber = 0;
         }
+        save();
+    }
+
+    private void load() {
+        players = new ArrayList<>();
+        for (int i = 0; i < playerRecord.size(); i++) {
+            try {
+                ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(playerRecord.get(i).toByteArray());
+                ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+                players.add((Player) objectInputStream.readObject());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void save() {
+        playerRecord = new ArrayList<>();
+        for (Player player : players) {
+            try{
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                ObjectOutputStream objectOutputStream =  new ObjectOutputStream(byteArrayOutputStream);
+                objectOutputStream.writeObject(player);
+                playerRecord.add(byteArrayOutputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean validation() {
+        for (Player player : players) {
+            if (!player.validation())
+                return false;
+        }
+        return true;
     }
 
     public void checkingWin() {
@@ -42,6 +85,7 @@ public class Game {
             nextTurn();
             draw(14);
         }
+        save();
     }
 
     public Tile draw() {

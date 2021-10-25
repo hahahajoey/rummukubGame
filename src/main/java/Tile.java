@@ -1,7 +1,8 @@
 import javax.print.DocFlavor;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Tile {
+public class Tile implements Serializable {
     public String number;
     public char color;
 
@@ -26,6 +27,8 @@ public class Tile {
             case "K":
             case "Q":
                 return 10;
+            case "*":
+                return 0;
             case "A":
                 return 1;
             default:

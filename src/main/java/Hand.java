@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
-public class Hand {
+public class Hand implements Serializable {
     public ArrayList<Tile> tiles;
     public int tilesNumber;
 
