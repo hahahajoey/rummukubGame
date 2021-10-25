@@ -94,7 +94,7 @@ public class Player implements Serializable {
                 return false;
             }
         }
-        if (!invalidBehavior) {
+        if (invalidBehavior) {
             invalidBehavior = false;
             return false;
         }

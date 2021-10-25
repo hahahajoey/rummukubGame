@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/features/PlayerSequence.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Meld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Meld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Set.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestSuite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Meld.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Meld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/Joker.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/Joker.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Set.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Set.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefGame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +73,7 @@
       <recent name="D:\Joey's files\gITHuB\rummukubGame\src\test\java\features" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PlayerClient">
+  <component name="RunManager" selected="Cucumber Java.Scenario: game logic test">
     <configuration name="GameServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameServer" />
       <module name="rummukubGame" />
@@ -86,20 +81,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PlayerClient" />
       <module name="rummukubGame" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: InvalidMovement" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Player 1's first turn" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/PlayerSequence.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="rummukubGame" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: InvalidMovement" />
+      <option name="NAME_FILTER" value="^Player 1\'s first turn$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player 1\'s first turn$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Player 1's first turn" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -111,14 +107,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Player have less than 30 points when place in meld" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: game logic test" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/PlayerSequence.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player have less than 30 points when place in meld$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player have less than 30 points when place in meld$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player have less than 30 points when place in meld" />
+      <option name="NAME_FILTER" value="^game logic test$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^game logic test$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: game logic test" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -130,32 +126,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Player have less than 30 points when reuse" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="TestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player have less than 30 points when reuse$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player have less than 30 points when reuse$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player have less than 30 points when reuse" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestSuite" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.GameServer" />
+      <item itemvalue="Application.PlayerClient" />
+      <item itemvalue="JUnit.TestSuite" />
+      <item itemvalue="Cucumber Java.Scenario: Player 1's first turn" />
+      <item itemvalue="Cucumber Java.Scenario: game logic test" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: game logic test" />
+        <item itemvalue="Cucumber Java.Scenario: Player 1's first turn" />
+        <item itemvalue="JUnit.TestSuite" />
         <item itemvalue="Application.PlayerClient" />
         <item itemvalue="Application.GameServer" />
-        <item itemvalue="Cucumber Java.Scenario: Player have less than 30 points when place in meld" />
-        <item itemvalue="Cucumber Java.Feature: InvalidMovement" />
-        <item itemvalue="Cucumber Java.Scenario: Player have less than 30 points when reuse" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +199,7 @@
       <workItem from="1635091774384" duration="33725000" />
       <workItem from="1635133725533" duration="9000" />
       <workItem from="1635133922391" duration="336000" />
-      <workItem from="1635134267706" duration="5104000" />
+      <workItem from="1635134267706" duration="12858000" />
     </task>
     <servers />
   </component>
@@ -232,6 +225,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/Hand.java</url>
           <line>38</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Game.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

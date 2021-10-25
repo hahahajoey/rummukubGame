@@ -1,6 +1,6 @@
 @tag
 Feature: Joker's functionality
-Test every functionality for joker
+  Test every functionality for joker
 
   @draw_joker
   Scenario: Player could draw joker from deck

@@ -91,7 +91,29 @@ public class StepDefGame {
     @Then("Player {int} 's melds do not has {string}")
     public void playerSMeldsDoNotHas(int playerNumber, String meld) {
         System.out.println(game);
-        System.out.println(game.players.get(playerNumber-1).hand);
+        System.out.println(game.players.get(playerNumber - 1).hand);
         assertFalse(game.players.get(playerNumber - 1).hasMeld(meld.split(" ")));
+    }
+
+    @When("Game start")
+    public void gameStart() {
+        game.start();
+    }
+
+    @Then("Current Player is Player {int}")
+    public void currentPlayerIsPlayer(int PlayerNumber) {
+        System.out.println(game.currentPlayerNumber);
+        assertTrue(game.currentPlayerNumber == PlayerNumber - 1);
+    }
+
+    @When("Player draw")
+    public void playerDraw() {
+        game.draw();
+    }
+
+    @And("Game board is {string}")
+    public void gameBoardIs(String board) {
+        System.out.println(game);
+        assertTrue(game.toString().equals(board));
     }
 }

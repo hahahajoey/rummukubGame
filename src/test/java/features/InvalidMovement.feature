@@ -1,6 +1,6 @@
 @tag
 Feature: Invalid movement blocker
-Test the function to block every invalid movement
+  Test the function to block every invalid movement
 
   @less_than_3_tiles
   Scenario: Player end up with less than 3 tiles in a meld
