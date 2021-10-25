@@ -6,26 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="631c8da9-517d-4554-859c-2a1974ee5558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Meld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Meld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Set.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TableReuseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/features/Joker.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/Joker.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Meld.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Meld.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Run.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Set.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Set.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TableReuseTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/features" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -84,14 +78,28 @@
       <recent name="D:\Joey's files\gITHuB\rummukubGame\src\test\java\features" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Scenario: Player placed tiles that are not in his hand">
-    <configuration name="Feature: Joker" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.PlayerClient">
+    <configuration name="GameServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameServer" />
+      <module name="rummukubGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PlayerClient" />
+      <module name="rummukubGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: InvalidMovement" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/Joker.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="rummukubGame" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: Joker" />
+      <option name="SUGGESTED_NAME" value="Feature: InvalidMovement" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -103,33 +111,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Player could place joker into melds" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/Joker.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player could place joker into melds$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player could place joker into melds$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player could place joker into melds" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Player end up with less than 3 tiles in a meld" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Player have less than 30 points when place in meld" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player end up with less than 3 tiles in a meld$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player end up with less than 3 tiles in a meld$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player end up with less than 3 tiles in a meld" />
+      <option name="NAME_FILTER" value="^Player have less than 30 points when place in meld$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player have less than 30 points when place in meld$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Player have less than 30 points when place in meld" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -141,33 +130,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Player made a meld has too less tiles" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Player have less than 30 points when reuse" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player made a meld has too less tiles$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player made a meld has too less tiles$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player made a meld has too less tiles" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Player placed tiles that are not in his hand" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/InvalidMovement.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="rummukubGame" />
-      <option name="NAME_FILTER" value="^Player placed tiles that are not in his hand$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player placed tiles that are not in his hand$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Player placed tiles that are not in his hand" />
+      <option name="NAME_FILTER" value="^Player have less than 30 points when reuse$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Player have less than 30 points when reuse$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Player have less than 30 points when reuse" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -181,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Scenario: Player placed tiles that are not in his hand" />
-        <item itemvalue="Cucumber Java.Scenario: Player made a meld has too less tiles" />
-        <item itemvalue="Cucumber Java.Feature: Joker" />
-        <item itemvalue="Cucumber Java.Scenario: Player could place joker into melds" />
-        <item itemvalue="Cucumber Java.Scenario: Player end up with less than 3 tiles in a meld" />
+        <item itemvalue="Application.PlayerClient" />
+        <item itemvalue="Application.GameServer" />
+        <item itemvalue="Cucumber Java.Scenario: Player have less than 30 points when place in meld" />
+        <item itemvalue="Cucumber Java.Feature: InvalidMovement" />
+        <item itemvalue="Cucumber Java.Scenario: Player have less than 30 points when reuse" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +206,7 @@
       <workItem from="1635091774384" duration="33725000" />
       <workItem from="1635133725533" duration="9000" />
       <workItem from="1635133922391" duration="336000" />
-      <workItem from="1635134267706" duration="393000" />
+      <workItem from="1635134267706" duration="5104000" />
     </task>
     <servers />
   </component>
@@ -259,9 +229,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/StepDefGame.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/src/main/java/Hand.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

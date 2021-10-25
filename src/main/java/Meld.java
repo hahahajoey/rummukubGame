@@ -92,4 +92,6 @@ public abstract class Meld implements Serializable {
     public abstract void insert(String[] meld);
 
     public abstract boolean validation();
+
+    public abstract int score();
 }

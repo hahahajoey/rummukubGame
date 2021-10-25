@@ -29,13 +29,34 @@ public class Set extends Meld {
 
     @Override
     public boolean validation() {
-        if (tiles.size() < 3)
-        {return false;}
+        if (tiles.size() < 3 || tiles.size() > 4) {
+            return false;
+        }
         for (Tile tile : tiles) {
-            if (tile.number != this.number) {
+            if (!tile.number.equals(this.number)) {
                 return false;
             }
         }
         return true;
+    }
+
+    @Override
+    public int score() {
+        return getNumber() * tiles.size();
+    }
+
+    public int getNumber() {
+        switch (number) {
+            case "J":
+            case "K":
+            case "Q":
+                return 10;
+            case "*":
+                return 0;
+            case "A":
+                return 1;
+            default:
+                return Integer.valueOf(number);
+        }
     }
 }

@@ -46,4 +46,13 @@ public class Run extends Meld {
         }
         return true;
     }
+
+    @Override
+    public int score() {
+        int score = 0;
+        for (Tile tile : tiles) {
+            score += tile.getNumber();
+        }
+        return score;
+    }
 }

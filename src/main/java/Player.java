@@ -2,22 +2,28 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Player implements Serializable{
+public class Player implements Serializable {
     public ArrayList<Meld> melds;
     public Hand hand;
     public int score;
     String name;
+    private int placedScore;
+    private boolean invalidBehavior;
 
     public Player(String name) {
         this.name = name;
         this.melds = new ArrayList<>();
         this.hand = new Hand();
         this.score = 0;
+        this.placedScore = 0;
+        this.invalidBehavior = false;
     }
 
     public void place(String[] meld) {
         hand.fold(meld);
-        melds.add(Meld.createMeld(meld));
+        Meld newMeld = Meld.createMeld(meld);
+        melds.add(newMeld);
+        placedScore += newMeld.score();
     }
 
     public void place(String[]... melds) {
@@ -35,10 +41,16 @@ public class Player implements Serializable{
     }
 
     public void insert(String[] meld, int meldNumber) {
+        if (placedScore < 30) {
+            invalidBehavior = true;
+        }
         melds.get(meldNumber).insert(meld);
     }
 
     public String reuse(int meldNumber, String tile) {
+        if (placedScore < 30) {
+            invalidBehavior = true;
+        }
         Meld meld = melds.get(meldNumber);
         if (meld instanceof Set) {
             return meld.reuse(tile);
@@ -82,6 +94,10 @@ public class Player implements Serializable{
                 return false;
             }
         }
-        return true;
+        if (!invalidBehavior) {
+            invalidBehavior = false;
+            return false;
+        }
+        return hand.validation();
     }
 }

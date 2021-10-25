@@ -42,6 +42,7 @@ public class StepDefGame {
     public void playerHasOnHand(int playerNumber, String tiles) {
         game.currentPlayerNumber = playerNumber - 1;
         game.draw(tiles.split(" "));
+        game.save();
     }
 
     @Given("Player {int} has {string} melds")
@@ -49,6 +50,7 @@ public class StepDefGame {
         game.currentPlayerNumber = playerNumber - 1;
         game.draw(meld.split(" "));
         game.place(meld.split(" "));
+        game.save();
     }
 
     @When("Player {int} reuse {string} from Player {int} meld {int}")
@@ -89,6 +91,7 @@ public class StepDefGame {
     @Then("Player {int} 's melds do not has {string}")
     public void playerSMeldsDoNotHas(int playerNumber, String meld) {
         System.out.println(game);
+        System.out.println(game.players.get(playerNumber-1).hand);
         assertFalse(game.players.get(playerNumber - 1).hasMeld(meld.split(" ")));
     }
 }

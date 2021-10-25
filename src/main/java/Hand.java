@@ -24,18 +24,19 @@ public class Hand implements Serializable {
 
     public void add(String tile) {
         this.tiles.add(Tile.createTile(tile));
+        tilesNumber++;
     }
 
     public void add(String[] tiles) {
         for (String tile : tiles) {
             add(tile);
-            tilesNumber++;
         }
     }
 
     public void fold(String[] meld) {
         for (String tile : meld) {
             removeFromHand(tile);
+            this.tilesNumber--;
         }
     }
 
@@ -66,5 +67,9 @@ public class Hand implements Serializable {
             }
         }
         return false;
+    }
+
+    public boolean validation() {
+        return tilesNumber == tiles.size();
     }
 }
