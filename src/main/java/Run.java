@@ -39,8 +39,16 @@ public class Run extends Meld {
         if (tiles.size() < 3) {
             return false;
         }
+        for (int i = 0; i < tiles.size() - 1; i++) {
+            if (tiles.get(i).number.equals("*") || tiles.get(i + 1).number.equals("*")) {
+                continue;
+            }
+            if (Integer.valueOf(tiles.get(i).number) + 1 != Integer.valueOf(tiles.get(i + 1).number)) {
+                return false;
+            }
+        }
         for (Tile tile : tiles) {
-            if (tile.color != this.color) {
+            if (tile.color != this.color && tile.color != '\0') {
                 return false;
             }
         }
@@ -50,8 +58,20 @@ public class Run extends Meld {
     @Override
     public int score() {
         int score = 0;
-        for (Tile tile : tiles) {
-            score += tile.getNumber();
+        for (int i = 0; i < tiles.size(); i++) {
+            if (!tiles.get(i).number.equals("*")) {
+                score += tiles.get(i).getNumber();
+            } else {
+                if (i > 0) {
+                    int temp = tiles.get(i - 1).getNumber() + 1;
+                    if (temp > 10) {
+                        temp = 10;
+                    }
+                    score += temp;
+                } else {
+                    score += tiles.get(i + 1).getNumber() - 1;
+                }
+            }
         }
         return score;
     }

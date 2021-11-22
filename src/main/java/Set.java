@@ -12,7 +12,7 @@ public class Set extends Meld {
         Iterator<Tile> iterator = this.tiles.iterator();
         Tile tile = iterator.next();
         while (iterator.hasNext()) {
-            if (tile.number != "*") {
+            if (!tile.number.equals("*")) {
                 this.number = tile.number;
                 break;
             }
@@ -33,6 +33,9 @@ public class Set extends Meld {
             return false;
         }
         for (Tile tile : tiles) {
+            if (tile.number.equals("*")) {
+                continue;
+            }
             if (!tile.number.equals(this.number)) {
                 return false;
             }
@@ -46,15 +49,21 @@ public class Set extends Meld {
     }
 
     public int getNumber() {
+        if (number == null) {
+            return 0;
+        }
         switch (number) {
             case "J":
             case "K":
             case "Q":
+            case "10":
+            case "11":
+            case "12":
                 return 10;
-            case "*":
-                return 0;
             case "A":
                 return 1;
+            case "*":
+                return 0;
             default:
                 return Integer.valueOf(number);
         }

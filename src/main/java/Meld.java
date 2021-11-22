@@ -18,11 +18,11 @@ public abstract class Meld implements Serializable {
                 continue;
             }
             if (color == '\0') {
-                color = tile.charAt(tile.length() - 1);
-            } else if (color == tile.charAt(tile.length() - 1)) {
-                return new Run(tiles);
-            } else {
+                color = tile.charAt(0);
+            } else if (color != tile.charAt(0)) {
                 return new Set(tiles);
+            } else {
+                return new Run(tiles);
             }
         }
         return new Set(tiles);

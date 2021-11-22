@@ -102,20 +102,8 @@ public class Game {
         }
     }
 
-    public void draw(String[]... tiles) {
-        for (String[] tile : tiles) {
-            draw(tile);
-        }
-    }
-
     public void place(String[] meld) {
         currentPlayer().place(meld);
-    }
-
-    public void place(String[]... melds) {
-        for (String[] meld : melds) {
-            place(meld);
-        }
     }
 
     public void insertFromHand(String[] meld, int playerNumber, int meldNumber) {

@@ -38,14 +38,15 @@ public class Deck {
 
     private LinkedList<Tile> generateDeck() {
         LinkedList<Tile> tiles = new LinkedList<>();
-        String[] numbers = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        String[] numbers = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
         char[] colors = {'R', 'G', 'B', 'O'};
         for (int i = 0; i < 2; i++) {
             for (String number : numbers) {
                 for (char color : colors) {
-                    tiles.add(Tile.createTile(number + color));
+                    tiles.add(Tile.createTile(color + number));
                 }
             }
+            tiles.add(Tile.createTile("*"));
         }
         return tiles;
     }

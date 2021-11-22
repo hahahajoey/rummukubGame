@@ -7,7 +7,7 @@ public class Player implements Serializable {
     public Hand hand;
     public int score;
     String name;
-    private int placedScore;
+    public int placedScore;
     private boolean invalidBehavior;
 
     public Player(String name) {
@@ -24,12 +24,6 @@ public class Player implements Serializable {
         Meld newMeld = Meld.createMeld(meld);
         melds.add(newMeld);
         placedScore += newMeld.score();
-    }
-
-    public void place(String[]... melds) {
-        for (String[] meld : melds) {
-            place(meld);
-        }
     }
 
     public Tile draw(Tile tile) {
@@ -55,14 +49,7 @@ public class Player implements Serializable {
         if (meld instanceof Set) {
             return meld.reuse(tile);
         }
-        int location = meld.locationForTile(tile);
-        if (location == 0 || location == meld.size() - 1) {
-            return meld.reuse(tile);
-        }
-        melds.remove(meld);
-        melds.add(meld.subMeld(0, location));
-        melds.add(meld.subMeld(location + 1, meld.size()));
-        return tile;
+        return meld.reuse(tile);
     }
 
     @Override
@@ -96,6 +83,10 @@ public class Player implements Serializable {
         }
         if (invalidBehavior) {
             invalidBehavior = false;
+            return false;
+        }
+        if (placedScore > 0 && placedScore < 30)
+        {
             return false;
         }
         return hand.validation();

@@ -10,10 +10,10 @@ public class Tile implements Serializable {
         if (NumberColor.length() == 1) {
             return new Tile(String.valueOf(NumberColor.charAt(0)), '\0');
         }
-        if (NumberColor.charAt(1) == '0') {
-            return new Tile("10", NumberColor.charAt(2));
+        if (NumberColor.length() == 3) {
+            return new Tile(NumberColor.substring(1, 3), NumberColor.charAt(0));
         }
-        return new Tile(String.valueOf(NumberColor.charAt(0)), NumberColor.charAt(1));
+        return new Tile(String.valueOf(NumberColor.charAt(1)), NumberColor.charAt(0));
     }
 
     private Tile(String number, char color) {
@@ -26,6 +26,9 @@ public class Tile implements Serializable {
             case "J":
             case "K":
             case "Q":
+            case "10":
+            case "11":
+            case "12":
                 return 10;
             case "*":
                 return 0;
@@ -38,7 +41,7 @@ public class Tile implements Serializable {
 
     @Override
     public String toString() {
-        return number + (color == 0 ? "" : String.valueOf(color));
+        return ((color == 0 ? "" : String.valueOf(color)) + number);
     }
 
     @Override
